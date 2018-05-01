@@ -1,0 +1,29 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Motivations for micro-optimization}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Description of micro-optimization}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.1}Post Multiply Normalization}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.2}Block Exponent}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.3}Integer optimizations}{18}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3.1}Conversion to fixed point}{18}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3.2}Small Constant Multiplications}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.4}Other optimizations}{20}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.4.1}Low-level parallelism}{20}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.4.2}Pipeline optimizations}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Related Work}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Figures}{25}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Tables}{27}
