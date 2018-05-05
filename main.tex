@@ -11,6 +11,50 @@
 %\author{Share\LaTeX}
 %\date{ }
 
+\RequirePackage{filecontents}% write the data file
+\begin{filecontents}{cycles.csv}
+student,Muhammad Hassan Siddiqui
+roll_no,MSCSF15M005
+thesis_title,Urdu Text to Speech Synthesizer
+supervisor_1,Dr. Muhammad Kamran Malik
+\end{filecontents}
+
+\usepackage{xparse}% mainly for \SplitList
+\usepackage{pgfkeys}
+\pgfkeys{/cycles/.is family, cycles,
+  % allow arbitrary unknown keys and set with \pgfkeyssetvalue
+  .unknown/.code={\pgfkeyssetvalue{\pgfkeyscurrentpath/\pgfkeyscurrentname}{#1}},
+}
+\newcommand\printcycle[1]{% print the key if it is defined and ??? otherwise
+    \pgfkeysifdefined{/cycles/#1}{\pgfkeysvalueof{/cycles/#1}}{???}%
+}
+
+% split input line into key-value pair
+\NewDocumentCommand{\AddCycle}{ >{\SplitList{,}} m }{%
+  \AddCycleValue #1
+}
+% put a key-value pair into \pgfkeys{/cycles}
+\newcommand\AddCycleValue[2]{\expandafter\pgfkeys\expandafter{/cycles,#1=#2}}
+
+% \ReadCycles{filename} keys the keys in <filename> into \pgfkeys{/cycles}
+\newread\cyclefile% file handler
+\def\apar{\par}% \ifx\par won't work but \ifx\apar will
+\newcommand\ReadCycles[1]{% read file into [\pgfkeys{/cycles}
+  \openin\cyclefile=#1% open file for reading
+  \loop\unless\ifeof\cyclefile% loop until end of file
+    \read\cyclefile to \cycleline% read line from file
+    \ifx\cycleline\apar% test for \par
+    \else%
+      \ifx\cycleline\empty\relax% skip over empty lines/comments
+      \else\expandafter\AddCycle\expandafter{\cycleline}%
+      \fi%
+    \fi%
+  \repeat% end of file reading loop
+  \closein\cyclefile% close input file
+}
+\ReadCycles{cycles.csv}% read the file
+
+
 \begin{document}
 
 
