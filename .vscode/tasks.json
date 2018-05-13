@@ -14,19 +14,19 @@
                 "-file-line-error",
                 "main.tex"
             ]
-        // },
-        // {
-        //     "label": "Run bibtex",
-        //     "type": "shell",
-        //     "group": {
-        //         "kind": "test",
-        //         "isDefault": true
-        //     },
-        //     "command": "bibtex",
-        //     "args": [
-        //         "-terse",
-        //         "*.aux"
-        //     ]
-        // }      
+        },
+        {
+            "label": "Run bibtex",
+            "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "command": "bibtex",
+            "args": [
+                "-terse",
+                "*.aux"
+            ]
+        }      
     ]
    }
