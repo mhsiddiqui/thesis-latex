@@ -1,32 +1,43 @@
 {
     "version": "2.0.0",
     "tasks": [
-          {
-            "label": "Run pdflatex",
+        {
+            "label": "Compile",
             "type": "shell",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "command": "pdflatex",
+            "command": "python",
             "args": [
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "main.tex"
+                "run.py"
             ]
         },
-        {
-            "label": "Run bibtex",
-            "type": "shell",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
-            "command": "bibtex",
-            "args": [
-                "-terse",
-                "*.aux"
-            ]
-        }      
+        // {
+        //     "label": "Run pdflatex",
+        //     "type": "shell",
+        //     "group": {
+        //         "kind": "build",
+        //         "isDefault": true
+        //     },
+        //     "command": "pdflatex",
+        //     "args": [
+        //         "-interaction=nonstopmode",
+        //         "-file-line-error",
+        //         "main.tex"
+        //     ]
+        // },
+        // {
+        //     "label": "Run bibtex",
+        //     "type": "shell",
+        //     "group": {
+        //         "kind": "test",
+        //         "isDefault": true
+        //     },
+        //     "command": "biber",
+        //     "args": [
+        //         "main"
+        //     ]
+        // }      
     ]
    }

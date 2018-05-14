@@ -4,8 +4,8 @@
 \usepackage{lgrind}
 \usepackage{graphicx}
 \pagestyle{plain}
-\usepackage{biblatex}
-\addbibresource{sample.bib}
+\usepackage[backend=biber, sorting=none]{biblatex}
+\addbibresource{bibliography.bib}
 
 %\title{Bibliography management: \texttt{biblatex} package}
 %\author{Share\LaTeX}
@@ -77,6 +77,7 @@ supervisor_1,Dr. Muhammad Kamran Malik
 \include{appa}
 \include{appb}
 
+\nocite{*}
 \printbibliography
 
 \end{document}
