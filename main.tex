@@ -6,6 +6,15 @@
 \pagestyle{plain}
 \usepackage[backend=biber, sorting=none]{biblatex}
 \addbibresource{bibliography.bib}
+\usepackage{hyperref}
+\hypersetup{pdftex,colorlinks=true,allcolors=blue}
+\usepackage{hypcap}
+
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\setlength{\parskip}{6pt}
 
 \RequirePackage{filecontents}% write the data file
 \begin{filecontents}{cycles.csv}
@@ -53,19 +62,19 @@ supervisor_1,Dr. Muhammad Kamran Malik
 
 \begin{document}
 
-\include{cover}
-\include{evaluation}
+\include{pages/cover}
+\include{pages/evaluation}
 % \include{signature}
-\include{PUBLICATION}
-\include{dedication}
-\include{Abstract}
-\include{Acknowledgements}
+\include{pages/PUBLICATION}
+\include{pages/dedication}
+\include{pages/Abstract}
+\include{pages/Acknowledgements}
 \pagestyle{plain}
 
 
-\include{contents}
-\include{chap1}
-\include{chap2}
+\include{pages/contents}
+\include{chapters/chap1}
+\include{chapters/chap2}
 \appendix
 \include{appa}
 \include{appb}
