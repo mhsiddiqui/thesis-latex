@@ -6,6 +6,8 @@
 %% prompt when you run the file main.tex through LaTeX.
 \chapter{Introduction}
 
+\section{Speech Synthesis}
+
 Speech is most important medium of conveying opinions and expressing feeling and thoughts.
 Human convert their thought into speech by using words, phrases and sentences in order to communicate with each other \cite{mumtaz2016break}. Speech is produced when air is exhaled by the lungs and vibrations are produced by air, these vibrations got a proper waveform shape by glottal cords and vocal tract. Text to Speech synthesis is the process of conversion of raw text into speech signals. It works by concatenation of small segments of recorded speech called phonemes \cite{khilari2015review}.
 
@@ -30,7 +32,13 @@ marker which adds stress and intonation to the text. Speech Synthesis unit conve
 received from NLP unit into audible speech with the help of different Digital Signal Processing
 Techniques. The quality of speech synthesis system is detected by naturalness and intelligibility of the speech.
 
-Partially blinded or fully blinded people usually suffer while using computer technology when there is no assistant or computer is not enough interactive. Due to which text to speech systems are becoming necessity of modern life. These systems increase the degree to which blind people can interact with sighted people \cite{klatt1987review} and could boost up their hope to survive in this world gracefully \cite{aida2010main}. Many applications of speech synthesis are emerging such as machines that read for blinds, aids for handicaps, computers that interact with user through speech. For all these applications a text to
+Partially blinded or fully blinded people usually suffer while using computer technology when there is no assistant or 
+computer is not enough interactive. Due to which text to speech systems are becoming necessity of modern life. 
+These systems increase the degree to which blind people can interact with sighted 
+people \cite{klatt1987review} and could boost up their hope to survive in this world 
+gracefully \cite{eide2004corpus}. Many applications of speech synthesis are emerging such as 
+machines that read for blinds, aids for handicaps, computers that interact with user through speech. 
+For all these applications a text to
 speech that convert text to speech are used \cite{klatt1982klattalk}.
 
 
@@ -53,14 +61,14 @@ connected words (isolated words but separated with least gap), continuous speech
 to talk while computer is processing content) and spontaneous speech (deals with variety of words
 that are used rarely) as well as two types of speaker model were presented independent and
 dependent of clients or speaker specifications. Vocabulary is also characterized according to size
-such as small vocabulary, medium vocabulary, large vocabulary, very large vocabulary and outof-vocabulary.
+such as small vocabulary, medium vocabulary, large vocabulary, very large vocabulary and out-of-vocabulary.
 Below are the major speech generation techniques.
 
 \section{Types of Speech Synthesis}
 For the process of speech synthesis, three types of processes are used.
 
 \subsection{Formant Synthesis}
-In Formant Synthesis, simple model of speech production and set of rulesuse are used to generate
+In Formant Synthesis, simple model of speech production and set of rules are used to generate
 speech. But it is very difficult to accurately describe the process of speech generation in set of
 rules
 
@@ -74,7 +82,25 @@ diphthongs \cite{saleem2002urdu}. This reduce distortion but it can decrease the
 That’s why the derived synthetic speech may not resemble the donor speaker in training database \cite{huang1997recent}.
 
 \subsection{Statistical Parametric Speech Synthesis}
-sad
+Statistical parametric speech synthesis is another approach which uses parameters to describe
+speech. In this technique, model is learned from speech data. This technique works better than
+concatenative technique \cite{merritt2013investigating}. 
+
+\section{Quality}
+The intelligibility and naturalness is the measure of quality of the synthesized speech \cite{swetha2013text}. 
+There is lots of experimentation over naturalness of voice as a result of TTS
+systems. In today’s world different segments are recorded and then concatenated for completing a
+message. A collection of speech words is collected and maintained in database by using a reader
+who reads large series of text. In these kind of system, to maintain the consistency the speaker
+speaks in a single style and keep in mind the distance from microphone and other factors to avoid
+the inconsistency. This type of TTS system is not required at all as the need is to have a system
+which can be expressive and convey message with proper expressions and styles. Work is
+performed to build a system that can convey the message according to the needs of the users. A
+single style of communication can lead towards wrong messages and can cause other problems of
+understandings. For example, it is not appropriate to convey a good news and bad news in a same
+style and manner. Similarly, it is not acceptable to ask a question in neutral way of communication \cite{eide2004corpus}.
+Multiple techniques like linear regression and neural networks were applied
+to get the results with improvements.
 
 %
 % Micro-optimization is a technique to reduce the overall operation count of
