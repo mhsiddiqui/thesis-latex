@@ -1,24 +1,62 @@
 \chapter{Related Work}
 
-
-\bigskip
-
-Let's cite! The Einstein's journal paper \cite{westwood1998validation} and the Dirac's book \cite{dirac} are physics related items. \cite{ryan2001narrative} virtual
-
-
-
-
-
-
-
-
-
-
-
+The TTS conversion is not a new field and people have been working on this field before electronic
+signal processing techniques. In beginning, people tried to build machines which were used to
+create human sound. After the development of computers, better systems were built using different
+techniques. In \cite{swetha2013text}, basic speech synthesizing technique
+which works by concatenation of small recorded speech segments called phonemes to form
+complete speech are discussed. Each word is first divided into syllables and then pronunciation for each syllable
+is concatenated in order to get pronunciation for whole word. This concatenated word has some
+delay between pronunciations of each syllable which is removed and as a result, final
+pronunciation of that word is obtained. Problems like Text Preprocessing, Pronunciation and
+Prosody makes it difficult. In Text Preprocessing, digits and abbreviations are converted to full
+words. Other problem is guessing correct pronunciation of a word. For example, word “lives” has
+different pronunciation in “He lives in Lahore” and “He saved two lives”. To create naturalness in
+sound, stress and intonation are applied to the input text which is also a very complex task.
 
 
+A rule based technique is designed in \cite{elovitz1976automatic}. The dataset is developed by extracting
+50,000 words from standard Corpus, Corpus of Present-Day Edited American English i.e. Brown
+corpus \cite{ku1967computational}. The system gave accuracy of about 93%. A more
+improved system was proposed in \cite{carlson1982multi} and \cite{klatt1982klattalk}.
 
 
+Dictionary and rule based approach is used in \cite{liberman1992text} where 1000,000 words were used for training model. A TTS system with
+prosody and concatenative speech parameters that were extracted through use of probabilistic
+learning methods in \cite{huang1996whistler}. A formant and Concatenative synthesis is developed in \cite{huang1997recent}
+where small segments of phonemes were concatenated to form whole speech. A training database
+was used contains about 6,000 phonetically balanced sentences recorded in natural style. In \cite{hunt1996unit}, linear regression and unit selection 
+based speech synthesis is designed using ATR Japanese database.
+
+
+Statistical parametric speech synthesis is another approach which uses parameters to describe
+speech. In this technique, model is learned from speech data. This technique works better than
+concatenative technique. In \cite{merritt2013investigating}, author discussed shortcomings of concatenative
+synthesis and why Hidden Markov model based technique is better than concatenative.
+
+A Hidden Markov model based Statistical parametric speech synthesis system was developed in
+\cite{yoshimura1998duration} where 450 sentences from ATR Japanese Database were used.  A similar system is designed in 
+\cite{tokuda2000speech} using Hidden Markov Model and evaluated it by taking input
+from Japanese database and by generating feature vector of those sentences and compared with
+original speech.
+
+
+A Hidden Markov model and unit selection based system is proposed in \cite{tokuda2002hmm} in which
+524 sentences from CMU communicator database were taken. The sentences are used to develop
+system and two algorithms are compared. The result showed unit give high quality results but it
+uses large data, voice remain fixed whereas HTS gave smooth, stable, various voices but it gives
+buzzy speech. In \cite{harashima2006review}, Hidden Markov model and rule based approach is applied 
+on voices taken from e-learning courses and online lessons for dataset creation and tested by
+generating voices and given as input to students to interpret it.
+
+
+Speech to text system is becoming more and more important for research because speech is getting
+more common for communication between computer/machines and also systems that use speech
+are faster and less exposed to error. As TTS system increases efficiency of machines extensive
+research on these systems is going own from last few decades. A text to speech system is a device
+that converts text to spoken output without any human interaction. Different systems are developed
+to transform text to ASII code and then to speech for English, systems for other languages are also
+designed in \cite{carlson1982multi}.
 
 
 
