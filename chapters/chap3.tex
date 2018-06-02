@@ -1,1 +1,76 @@
 \chapter{Methodology}
+
+Text to Speech synthesis system designed in this paper is divided in two sub modules. One perform analysis and preprocessing of 
+data and other transform processed data into sound signals. These modules are following
+
+\begin{enumerate}
+  \item Text Processing Unit
+  \item Speech Synthesis System
+\end{enumerate}
+
+\section{Text Processing Unit}
+This unit is the unit which is responsible for processing of text before text is sent to speech synthesis system. 
+This unit find numbers, dates and time in input data and converts it into format acceptable by speech synthesizer.  
+This module consists of following sub modules.
+
+\begin{enumerate}
+  \item Special Character Processor
+  \item Semantic Tagger  
+  \item Text Generator
+  \item Text Formatter 
+\end{enumerate}
+
+
+\subsection{Special Character Processor}
+
+Raw text may contain special characters such as punctuation marks. These characters helps to understand context of a word but 
+are not converted into sounds. We remove all such characters from text before further processing. 
+Another processing which is done is conversion of all arabic numerals like \textarabic{١}, \textarabic{٢} and \textarabic{٣} into their corresponding 
+characters like 1, 2 and 3. It is because it makes it easy to further process text after it has been converted into same type of numerals.
+
+\subsection{Semantic Tagger}
+The purpose of Semantic Tagger is to identify numbers, dates and time from input data and give them proper tags. 
+All numbers in input data are converted into arabic numerals of type 1, 2 and 3 in previous step. 
+There can be multiple form of numbers, dates and time. These forms are explained below.
+
+
+\begin{enumerate}    
+  \item Dates in following format
+
+  \begin{enumerate}[label=\alph*.]
+    \item 12/11/2018 or 12/11/18 with different separaters like \enquote{/} or \enquote{-} or \enquote{.}
+    \item \texturdu{12 دسمبر 2012}
+    \item \texturdu{12 دسمبر}
+  \end{enumerate}
+  \item Number in following format
+  \begin{enumerate}[label=\alph*.]
+    \item Whole Numbers such as 123
+    \item Floating point numbers such as 12.3
+  \end{enumerate}
+
+  \item Time in following format
+
+  \begin{enumerate}[label=\alph*.]
+    \item 12:12
+    \item 12:12:12
+  \end{enumerate}
+\end{enumerate}
+
+
+In table \ref{table:semantic_tagger_regex}, regex used for identification of these numbers, dates and time are shown.
+
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Regex} & \textbf{Type} & \textbf{Example} \\ \hline
+(\textbackslash{}d+(?:\textbackslash{}.\textbackslash{}d+)?) & Integer or Floating point number & 123 or 12.312 \\ \hline
+\textbackslash{}d\{1,2\}:\textbackslash{}d\{1,2\}(?::\textbackslash{}d\{1,2\})? & Time with or without seconds & 5:12 or 5:12:10 \\ \hline
+\textbackslash{}d\{1,4\}{[}./-{]}\textbackslash{}d\{1,4\}{[}./-{]}\textbackslash{}d\{1,4\} & Date with separator like \enquote{/} or \enquote{-} or \enquote{.} & 12-10-2018 or 12/10/18 \\ \hline
+\%s \textbackslash{}d\{4\} & Dates with month name in Urdu. This is checked by replacing \%s with each month name separately. & \texturdu{12 دسمبر} \\ \hline
+\end{tabular}%
+}
+\caption{Regular Expression for Semantic Tagger}
+\label{table:semantic_tagger_regex}
+\end{table}

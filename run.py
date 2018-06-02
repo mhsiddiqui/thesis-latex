@@ -1,6 +1,6 @@
 import subprocess
 
-pdflatex = ["pdflatex", "-interaction=nonstopmode", "-file-line-error", "main"]
+pdflatex = ["xelatex", "-interaction=nonstopmode", "-file-line-error", "main"]
 biber = ["bibtex", "main"]
 
 print subprocess.Popen(pdflatex).communicate()   
