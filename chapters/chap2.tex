@@ -17,7 +17,7 @@ sound, stress and intonation are applied to the input text which is also a very 
 
 A rule based technique is designed in \cite{elovitz1976automatic}. The dataset is developed by extracting
 50,000 words from standard Corpus, Corpus of Present-Day Edited American English i.e. Brown
-corpus \cite{ku1967computational}. The system gave accuracy of about 93%. A more
+corpus \cite{ku1967computational}. The system gave accuracy of about 93\%. A more
 improved system was proposed in \cite{carlson1982multi} and \cite{klatt1982klattalk}.
 
 
@@ -53,7 +53,7 @@ generating voices and given as input to students to interpret it.
 Corpus based approach for Expressive Prosody Modeling is applied in \cite{eide2004corpus} in which
 manually produced dataset which is not publicly available was used. To evaluate the synthesized
 speech, the output is given for testing to 32 native English speakers. For bad news, good news and
-for yes/no the accuracy is 70.2%, 80.3% and 84% respectively
+for yes/no the accuracy is 70.2\%, 80.3\% and 84\% respectively
 
 
 Tones and Break Indices ToBI are discussed on American English in \cite{pitrelli2004tobi}. Majorly
@@ -87,30 +87,69 @@ concatenating benefits of HMM based TTS system and waveform based TTS system. Sy
 developed using Matlab, a library of phoneme and their sound is created and waveform of audio
 and audio itself is generated using these libraries.
 
-% Speech to text system is becoming more and more important for research because speech is getting
-% more common for communication between computer/machines and also systems that use speech
-% are faster and less exposed to error. As TTS system increases efficiency of machines extensive
-% research on these systems is going own from last few decades. A text to speech system is a device
-% that converts text to spoken output without any human interaction. Different systems are developed
-% to transform text to ASCI code and then to speech for English, systems for other languages are also
-% designed in \cite{carlson1982multi}.
+
+A more advance technique in Neural Network based technique as it works better than Hidden
+Markov model based technique. Time domain neural networks with
+database containing sounds of words called phonemes is used in \cite{karaali1998text}. The basic flow of the system involves
+speech recording, speech labelling, voice coder and input processing using Time Delay Neural
+Network. The figure \ref{fig:Time Domain Neural Network based TTS System} shows the block diagram of system.
+
+\begin{center}
+\begin{figure}[hbtp]
+\centering
+  \includegraphics[width=\linewidth]{images/time_domain_neural_network.jpg}
+  \caption{Time Domain Neural Network based TTS System}
+  \label{fig:Time Domain Neural Network based TTS System}
+\end{figure}
+
+\end{center}
 
 
+Deep Neural Networks is applied in place of Hidden Markov model in \cite{ze2013statistical} as HMM
+based system cannot model complicated context dependencies. Deep Neural Networks (DNN) can
+cover limitations in HMM based system and can also outperform HMM based system.
+
+Recurrent Neural Networks (RNN) is applied in \cite{fan2014tts} by using the Bidirectional Long
+Short Term Memory (BLSTM) with dataset consisting of 5000 training utterances and 200
+utterances for testing the system. Whole recording was done in voice of female native speaker.
+Objective and subjective evaluation measures are used to find distortion between natural and
+synthesized speech and quality respectively. The preference results that hybrid system is better as
+hybrid gave 44\%, 59\% and 55\% accuracy whereas neural network, HMM and DNN gave 29\%,
+22\% and 20\% accuracy respectively.
 
 
+Recurrent Neural Network (RNN) is used in \cite{muthukumar2016recurrent} for filter for
+synthesis. Apart from that a novel approach was also used for training of Classification and
+Regression Tree jointly instead of training all these independently.
 
 
+Neural Networks is used in \cite{wu2016merlin} with dataset consisting of 328 hours was collected in
+voice of native 1506 speakers. The model is tested by giving 20 sets of randomly selected from
+evaluation set and asked them to rate output of each set between 0 and 100.
 
 
+For Urdu Language, \cite{saleem2002urdu} and \cite{urdu_text_preprocessing} described Natural
+Language Processing (NLP) unit for Urdu TTS. NLP unit is divided in two parts called as preprocessing and phonological processing unit. Pre-processing unit converts number, date and time
+into their respective literal strings. For example, 100 and 5-11-2002 will be converted into \<سو> and \<پانچ نومبر دوہزاردو> respectively. Special symbols like \$ and & are also handled in pre-processing unit. Last stage of pre-processing unit is grapheme into phoneme convertor. Phonological
+processing unit contains syllable marker which marks syllable boundaries and stress and
+intonation markers mark stress and intonation.
 
 
+In \cite{saleem2002urdu} consonantal and vocalic sounds for Urdu Language is discussed . Bi-Lingual Text to Speech Synthesis 
+System for Urdu and Sindhi is designed in \cite{shah2004bi} using
+bilingual hybrid knowledge based approach by using concatenated synthesis method. (Hussain, S.
+2005) discussed Phonological Processing unit for Urdu language in detail. This module applies
+letter to sound rules, syllabification to the normalized text. This is followed by stress and intonation
+marker. Statistical based part of speech tagger for
+Urdu language is discussed in \cite{anwar2007statistical}. The model is evaluated by comparison of unigram, bigram and backoff
+experiments with small and large tag sets. t-test, POS accuracy are used to measure performance.
 
 
-
-
-
-
-
+Problems in Urdu segmentation are discussed for Urdu in \cite{durrani2010urdu}. Clause boundary identification is discussed in 
+\cite{parveen2011clause} using classifier
+and clause markers in Urdu language using conditional Random Field as a classifier. (Zeeshan. A,
+Joao P, 2014) and (Omer Nawaz, Dr. Tania Habib, 2014) designed a HMM based TTS system for
+Urdu language using HTS toolkit is designed in \cite{ahmed2014hmm} and \cite{nawaz2014hidden}.
 
 
 

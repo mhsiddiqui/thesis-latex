@@ -3,6 +3,10 @@
 \documentclass[12pt,twoside]{mitthesis}
 \usepackage{lgrind}
 \usepackage{graphicx}
+\usepackage{arabtex}
+\usepackage{utf8}
+\usepackage{csquotes}
+
 \usepackage{caption}
 \pagestyle{plain}
 \usepackage[backend=biber, sorting=none]{biblatex}
@@ -57,7 +61,7 @@ supervisor_1,Dr. Muhammad Kamran Malik
 
 
 \begin{document}
-
+\setcode{utf8}
 \include{pages/cover}
 \include{pages/evaluation}
 % \include{signature}
@@ -71,9 +75,10 @@ supervisor_1,Dr. Muhammad Kamran Malik
 \include{pages/contents}
 \include{chapters/chap1}
 \include{chapters/chap2}
+\include{chapters/chap3}
 \appendix
-\include{appa}
-\include{appb}
+\include{pages/appa}
+\include{pages/appb}
 
 \nocite{*}
 \printbibliography
