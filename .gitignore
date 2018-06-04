@@ -42,3 +42,4 @@ thesis.run.xml*
 *.latexmkrc*
 *_latexmk*
 *.csv
+_minted-main/

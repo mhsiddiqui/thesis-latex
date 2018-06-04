@@ -74,3 +74,146 @@ In table \ref{table:semantic_tagger_regex}, regex used for identification of the
 \caption{Regular Expression for Semantic Tagger}
 \label{table:semantic_tagger_regex}
 \end{table}
+
+\subsection{Text Generator}
+Semantic tagger will return all number, dates and time from text with each one marked as date/time/number. Text generator part will take each word and generate Urdu text according to its tagging. Each tagged number is handled by specific text converter. These converters are listed below.
+
+\begin{enumerate}
+  \item Number to Text Converter
+  \item Date to Text Converter 
+  \item Time to Text Converter
+\end{enumerate}
+
+\subsubsection{Number to Text Converter}
+This unit will deal with whole numbers, fractional numbers and decimal numbers. In table \ref{table:no_conversion_example}, example conversions are shown. 
+
+\begin{table}[]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Word} & \textbf{Converted Text}                          \\ \hline
+123           & \texturdu{ایک سو تئیس}                                     \\ \hline
+1231          & \texturdu{ایک ہزار دو سو اکتیس}                            \\ \hline
+123.1234      & \texturdu{ایک سو تئیس اعشاریہ ایک دو تین}                   \\ \hline
+12345         & \texturdu{بارہ ھزار تین سو پینتالیس}                        \\ \hline
+1234567       & \texturdu{بارہ لاکھ چونتیس ھزار پانچ سو ستاسٹھ}             \\ \hline
+987654321     & \texturdu{اٹھانوے کروڑ  چھہتر لاکھ   چون ھزار تین سو اکیس}  \\ \hline
+143.159874    & \texturdu{ایک سو تینتالیس  اعشاریہ ایک پانچ نو آٹھ سات چار} \\ \hline
+\end{tabular}
+\caption{Number Conversion example}
+\label{table:no_conversion_example}
+\end{table}
+
+The both integer and fractional part of floating point number are handled differently. The algorithm for integral number is described below.
+
+\begin{minted}[mathescape,
+               breaklines, 
+               numbersep=5pt,
+               gobble=1,
+               frame=lines,
+               framesep=1mm]{python}
+  def get_factors(number):
+    factored_integer_list = [100000000000, 1000000000, 10000000, 100000, 1000, 100]
+    factored_number = []
+    for factor in factored_integer_list:
+        If factor > number and number != 0:
+            factored_number.append(number/factor)
+            factored_number.append(factor)
+            number = number % factor  
+    If number != 0:
+        factored_number.append(number)
+    return factored_number
+
+\end{minted}
+
+This algo will return list of factored number and factors. For 1213, the result of this algorithm will be 
+[1, 1000, 2, 100, 13]. The integer to Urdu mapping for number 0 to 100 and number like 1000, 100000 etc are 
+stored in CSV file. The factored number list will then be converted into text by using integer to Urdu mapping. In table \ref{table:number_mapping} urdu mapping 
+of each possible factor is listed. Each number in fractional part of floating pointing number is replaced by their respective mapping from above list. 
+These two parts are then join to get complete text of input number. This module is very important module as it is also used in date and time conversion.  
+
+\subsubsection{Date to Text Converter}
+
+The date to text Converter deals with date in following formats
+
+\begin{itemize}
+  \item 12/12/2012
+  \item 12/12/12
+  \item 12.12.2012
+  \item 12.12.12
+  \item 12-12-2012
+  \item 12-12-12
+  \item \texturdu{12 دسمبر 2012}
+\end{enumerate}
+
+All dates will be converted into common format e.g. \texturdu{ بارہ دسمبر دو ہزار بارہ}. Some example conversions are shown in table \ref{table:example_of_date_conversions}.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Date} & \textbf{Converted Text}            \\ \hline
+12/10/15      & \texturdu{دس دسمبر  دو ھزار پندرہ} \\ \hline
+12.10.15      & \texturdu{دس دسمبر  دو ھزار پندرہ} \\ \hline
+12-10-15      & \texturdu{دس دسمبر  دو ھزار پندرہ} \\ \hline
+12.10.1989    & \texturdu{دس دسمبر انیس سو نواسی}  \\ \hline
+\end{tabular}
+\caption{Example Date Conversions}
+\label{table:example_of_date_conversions}
+\end{table}
+
+The word tagged as date is first processed to get year, month and day of month. Day and year are then passed to number to text converter and month is 
+converted to its corresponding mapping. This mapping is saved in CSV file. This is shown in table \ref{table:month_mapping}. 
+In Urdu, in dates, we have different notation for year e.g. 1980 in number is spoken as \texturdu{ایک ھزار نو سو نواسی} (One thousand nine hundred and 
+eighty nine) but in dates, it is spoken as \texturdu{انیس سو نواسی} 
+(Nineteen hundred and eighty nine). This thing is also handled during the process of date to text conversion.
+
+
+\subsubsection{Time to Text Converter}
+
+Time can occur with seconds or without seconds in text. It is written in 1:11:12 or 1:12 format. All word tagged as time will be converted into text 
+by separating hour, minutes and seconds from time. Each value will be converted into Urdu text by using number to text converted. All these values are 
+combined to make complete time text. Table \ref{table:example_time_conversion} shows example conversions.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Time} & \textbf{Converted Text}                        \\ \hline
+1:12:15       & \texturdu{ایک بج کر  بارہ منٹ اور پندرہ سیکنڈ} \\ \hline
+7:45          & \texturdu{سات بج کر پینتالیس منٹ}              \\ \hline
+\end{tabular}
+\caption{Example Time Conversions}
+\label{table:example_time_conversion}
+\end{table}
+
+\subsection{Text Formatter}
+The purpose of formatter is to replace all number, dates and time with their corresponding Urdu text returned by Text generator. 
+This process is performed in following order
+\begin{enumerate}
+  \item Word tagged as dates are replaced by their corresponding text
+  \item Word tagged as time are replaced by their corresponding text
+  \item Word tagged as number are replaced by their corresponding text. 
+\end{enumerate}
+The resultant text will only contains Urdu text which can now pass to the speech synthesizer which will convert it to speech signals. 
+
+\section{Speech Synthesis System}
+
+Below are the tools used for the process of Speech Synthesis of Urdu.
+
+\begin{enumerate}
+  \item Speech Tools Library of Edinburg
+  \item Festvox
+  \item SPTK
+  \item Festival
+\end{enumerate}
+
+\subsection{Speech Tools Library of Edinburg}
+The Edinburgh Speech tools is collection of utilities used for speech processing. These utilities cover major tasks such that reading and 
+writing speech waveforms, parameter files(F0 and LPC etc). The speech tools also include executable programs which can 
+be used in user defined programs.
+
+
+\subsection{Festvox}
+Festvox is a tool which can be used to build synthetic voices. This includes scripts for building voice in other languages. 
+This can be used to build voice for limited domain in specific language.

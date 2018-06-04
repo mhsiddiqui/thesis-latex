@@ -4,18 +4,28 @@
 \usepackage{lgrind}
 \usepackage{graphicx}
 \usepackage{enumitem}
+\usepackage{titlesec}
 \usepackage{arabtex}
 \usepackage{utf8}
 \usepackage{csquotes}
-
+\usepackage{longtable}
 \usepackage{xltxtra}
 \usepackage{fontspec}
+\usepackage{minted}
 \usepackage{polyglossia}
 \setmainlanguage{english}
 \setotherlanguage{urdu}
 \setotherlanguage{arabic}
 \newfontfamily\arabicfont[Script=Arabic,Scale=1, Path=font/]{Scheherazade-R.ttf}
 \newfontfamily\urdufont[Script=Urdu,Scale=1, Path=font/]{jameel_noori_nastaleeq.ttf}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
 
 \usepackage{caption}
 \pagestyle{plain}
