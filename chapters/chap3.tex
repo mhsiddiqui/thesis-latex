@@ -199,6 +199,8 @@ The resultant text will only contains Urdu text which can now pass to the speech
 
 \section{Speech Synthesis System}
 
+\subsection{Tools}
+
 Below are the tools used for the process of Speech Synthesis of Urdu.
 
 \begin{enumerate}
@@ -208,12 +210,110 @@ Below are the tools used for the process of Speech Synthesis of Urdu.
   \item Festival
 \end{enumerate}
 
-\subsection{Speech Tools Library of Edinburg}
+\subsubsection{Speech Tools Library of Edinburg}
 The Edinburgh Speech tools is collection of utilities used for speech processing. These utilities cover major tasks such that reading and 
 writing speech waveforms, parameter files(F0 and LPC etc). The speech tools also include executable programs which can 
 be used in user defined programs.
 
 
-\subsection{Festvox}
+\subsubsection{Festvox}
 Festvox is a tool which can be used to build synthetic voices. This includes scripts for building voice in other languages. 
 This can be used to build voice for limited domain in specific language.
+
+\subsubsection{SPTK}
+SPTK stands for Speech Processing Toolkit. As name suggests, this tool is for processing speech signals in UNIX systems. 
+
+\subsubsection{Festival}
+
+Festival is a speech synthesis system developed in Centre for Speech Technology Research (CSTR) which is a multi-platform 
+framework for building speech synthesis system. This system is designed in such a way that it can be used for following purposes
+
+\begin{enumerate}
+  \item Research purpose for improvement in speech synthesis system
+  \item For developing speech synthesis applications
+\end{enumerate}
+
+One of the main thing that makes Festival very useful is scripting language which is based upon Scheme programming language. This can be used to manage parameters and flow of  control in Festival. 
+
+\subsection{Process}
+
+The process of speech synthesis is based on statistical parametric speech synthesis. The statistical parametric speech synthesis is model 
+based speech synthesis in which model is trained using training data. Training data consists of recorded speech and their corresponding labels. 
+In this method, speech is elaborated with parameters which are defined by statistics. This is why it is called as statistical parametric speech synthesis. 
+
+The CLUSTERGEN statistical parametric speech synthesis is type of synthesis in which model is trained and used for synthesis in 
+Festival Speech Synthesis system. 
+
+\subsubsection{Preparing Data}
+
+For training purpose, Phonetically Rich Urdu Speech Corpus \cite{urdu_corpus} is used. This data consists of recordings of 708 phonetically rich sentence, 
+10,101 tokens with 5,656 unique words. Total duration of recording is 70 minutes.
+
+\subsubsection{Data Labeling}
+Data is labeled in labeled in specific format which is required by FestVox for training purpose. The is labeled in following format.
+\\ \\
+( c1 "\texturdu{نیلم نے سالگرہ پر ہیڈ سیسموگراف اسود قریشی کے ماتھے پر اینٹھن اور غم کی آتشیں رو محسوس کی}" )
+
+Where c1 is the name of recording file and text between quotation marks is corresponding label of that recording.
+
+\subsubsection{Training Data}
+
+The whole data is further divided in 10:1 ratio in training and test set respectively.
+
+
+\subsubsection{Urdu to Hindi Transliteration}
+
+The underlying system of Urdu TTS is Hindi TTS system. So all the alphabets are mapped in their corresponding Hindi alphabets. 
+In this way, text is first converted into corresponding Hindi text using that mapping and then it is converted into sound. 
+Mapping of each Urdu word with Hindi word used in this system is shown in table \ref{table:hindi_to_urdu}.
+
+\subsubsection{Labeling Data}
+
+The first stage of training is to label speech database using HMM labeler. We are using EHMM labeler which is provided in FestVox. In this process, context dependent models are trained using Baum-Welch. This labeler works in 8 steps.
+Prompt files are extracted from utterance structure of Festival.
+
+\begin{itemize}
+  \item From prompt files unique sequence of phones are extracted and stored in a list.
+  \item List of wav files is collected for feature extraction by using prompt files.
+  \item From wav files, cepstral coefficients (LPCCs and MFCCs) are extracted.
+  \item From cepstral coefficients, deltas and delta-delta features are generated.
+  \item By using generated features and wav files list, features vectors are modified.
+  \item Phones list generated in step # 2 and wav file list is used to modify prompt list.
+  \item Hidden Markov model is trained using Baum-Welsh algorithm till difference in the average likelihood is less than 0.001.
+  \item Labels are generated according to training data.
+  \item Integer indices of labels are converted into phone names
+\end{enumerate}
+
+\subsubsection{Building Utterance Structure}
+
+Utterance is the essential building unit of Festival. It shows relation between bunch of items where each item relates to word, syllable or segment etc. Below are the some of the relations used in building utterance structure.
+
+\begin{itemize}
+  \item{\textbf{Text}:} It consists of string to be processed and features of that string.
+  \item{\textbf{Token}:} Token mean each word in a sentence separated by some language specific separator.
+  \item{\textbf{Word}:} A small unit of speech which can be pronounced with the help of letter to sound rules of a language.
+  \item{\textbf{Phrase}:} Phrase mean group of words forming a part of a sentence.
+  \item{\textbf{Syllable}:} Syllables are units which when combined with vowels form complete pronunciation of a word.
+  \item{\textbf{Segment}:} Segment is consists of list of phones.
+  \item{\textbf{SylStructure}:} This is a tree structure which is formed with word, syllable and segment.
+  \item{\textbf{IntEvent}:} These are array of syllable related intonation events.
+  \item{\textbf{Intonation}:} Intonation means rise and fall in speech signals.
+\end{itemize}
+
+
+\subsubsection{Coefficient Extraction}
+Coefficient extraction is the process of extracting parameters like F0, mcep and voicing coefficients using SPTK. This is done by 
+generating F0 and mcep coefficient. These parameters are then combined to make final parameter files. 
+This is a lengthy process which can take lot of time depending on size of training data.
+
+\subsubsection{Building the Model}
+
+All the data generated above is used to train and build HMM-state duration model. This process works in following steps.
+
+\begin{enumerate}
+  \item Statenames Generation
+  \item Parametric Model generation
+  \item Duration model generation for statenames
+\end{enumerate}
+
+This resulting model can be used to perform text to speech synthesis process.

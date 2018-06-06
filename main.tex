@@ -13,12 +13,18 @@
 \usepackage{fontspec}
 \usepackage{minted}
 \usepackage{polyglossia}
+\usepackage{xltxtra}
+\usepackage{devanagari}  
+
 \setmainlanguage{english}
 \setotherlanguage{urdu}
 \setotherlanguage{arabic}
+% \setotherlanguage{sanskrit}
+
 \newfontfamily\arabicfont[Script=Arabic,Scale=1, Path=font/]{Scheherazade-R.ttf}
 \newfontfamily\urdufont[Script=Urdu,Scale=1, Path=font/]{jameel_noori_nastaleeq.ttf}
 
+% \newfontfamily\sanskritfont[Script=Devanagari, Mapping=devanagarinumerals]{Mukta}
 \setcounter{secnumdepth}{4}
 
 \titleformat{\paragraph}
@@ -96,6 +102,7 @@ supervisor_1,Dr. Muhammad Kamran Malik
 \include{chapters/chap1}
 \include{chapters/chap2}
 \include{chapters/chap3}
+\include{chapters/chap4}
 \appendix
 \include{pages/appa}
 \include{pages/appb}
