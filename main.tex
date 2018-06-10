@@ -5,26 +5,26 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{titlesec}
-\usepackage{arabtex}
 \usepackage{utf8}
 \usepackage{csquotes}
 \usepackage{longtable}
-\usepackage{xltxtra}
 \usepackage{fontspec}
 \usepackage{minted}
 \usepackage{polyglossia}
 \usepackage{xltxtra}
-\usepackage{devanagari}  
+\usepackage[nospace,noadjust]{cite}
 
 \setmainlanguage{english}
 \setotherlanguage{urdu}
 \setotherlanguage{arabic}
-% \setotherlanguage{sanskrit}
+\setotherlanguages{sanskrit}
+
 
 \newfontfamily\arabicfont[Script=Arabic,Scale=1, Path=font/]{Scheherazade-R.ttf}
 \newfontfamily\urdufont[Script=Urdu,Scale=1, Path=font/]{jameel_noori_nastaleeq.ttf}
+\newfontfamily\devanagarifont[Script=Devanagari, Path=font/]{Lohit-Devanagari.ttf}
 
-% \newfontfamily\sanskritfont[Script=Devanagari, Mapping=devanagarinumerals]{Mukta}
+
 \setcounter{secnumdepth}{4}
 
 \titleformat{\paragraph}
@@ -35,10 +35,10 @@
 
 \usepackage{caption}
 \pagestyle{plain}
-\usepackage[backend=bibtex, sorting=none]{biblatex}
+\usepackage[backend=biber, sorting=none]{biblatex}
 \addbibresource{bibliography.bib}
 \usepackage{hyperref}
-\hypersetup{pdftex,colorlinks=true,allcolors=blue}
+\hypersetup{xetax,colorlinks=true,allcolors=blue}
 \usepackage{hypcap}
 
 
