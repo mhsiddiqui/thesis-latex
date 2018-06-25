@@ -39,9 +39,51 @@ For the process of evaluation, we selected list of 64 words and 8 sentences. Wor
 \subsection{Methodology}
 An evaluation form is designed which have three sections. 
 
+
+\subsubsection{Diagnostic Rhyme Test (DRT) Section}
+
+This section has 8 questions. In each question, user will play recording of some words which are converted to sound using our TTS system. These words are tested through following carrier sentence.
+
+  \texturdu{نیچے دیے گئے الفاظ میں سے حرکت پے نشان لگائیں}
+
+User will have to select that word from list of words which have same sound but different first character.
+
+\subsubsection{Modified Diagnostic Rhyme Test (M-DRT) Section}
+
+This section has 8 questions. In each question, user will play recording of some words which are converted to sound using our TTS system. These words are tested through following carrier sentence.
+
+  \texturdu{نیچے دیے گئے الفاظ میں سے حرکت پے نشان لگائیں}
+
+User will have to select that word from list of words which have same sound but different last character.
+
+\subsubsection{Mean Opinion Score (MOS) Section}
+In this section, user will have to play a sentence and user will rate converted text from 1 to 5. User will have to rate them on the basis of following properties.
+
 \begin{itemize}
-  \item Diagnostic Rhyme Test (DRT)
-  \item Modified Diagnostic Rhyme Test (M-DRT)
-  \item Mean Opinion Score (MOS)
+  \item {\textbf{Naturalness}:} How much converted sound is close to sound produced by a human? 
+  \item {\textbf{Intelligibility}:} How conveniently the word was recognized
+  \item {\textbf{Overall}:} How do you rate this sound overall? Is this system is usable to use for blind people?
 \end{itemize}
 
+System is evaluation by 47 (33 male and 14 female) native Urdu speakers who carefully listened and evaluated system. Each listener evaluated each question separately after listening it. 
+
+\section{Results}
+
+During the evaluation of this system, it is observed that most of the word which have same sound are easily recognizable. Almost 90\% of the such words are correctly identified by users. The result shows that output of the system is recognizable and intelligible but not very natural. Table \ref{table:evaluation_result} shows the complete result of evaluation.
+
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Test}                                  & \textbf{Score} \\ \hline
+Diagnostic Rhyme Test (DRT)                    & 0.95           \\ \hline
+Modified Diagnostic Rhyme Test (M-DRT) Section & 0.88           \\ \hline
+Naturalness                                    & 3.24           \\ \hline
+Intelligibility                                & 3.42           \\ \hline
+Usability                                      & 3.49           \\ \hline
+\end{tabular}%
+}
+\caption{Evaluation Result}
+\label{table:evaluation_result}
+\end{table}
