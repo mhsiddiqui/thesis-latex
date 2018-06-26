@@ -12,32 +12,6 @@
             "args": [
                 "run.py"
             ]
-        },
-        // {
-        //     "label": "Run pdflatex",
-        //     "type": "shell",
-        //     "group": {
-        //         "kind": "build",
-        //         "isDefault": true
-        //     },
-        //     "command": "pdflatex",
-        //     "args": [
-        //         "-interaction=nonstopmode",
-        //         "-file-line-error",
-        //         "main.tex"
-        //     ]
-        // },
-        // {
-        //     "label": "Run bibtex",
-        //     "type": "shell",
-        //     "group": {
-        //         "kind": "test",
-        //         "isDefault": true
-        //     },
-        //     "command": "biber",
-        //     "args": [
-        //         "main"
-        //     ]
-        // }      
+        }     
     ]
    }
