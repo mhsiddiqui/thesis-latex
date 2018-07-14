@@ -15,10 +15,17 @@ different pronunciation in “He lives in Lahore” and “He saved two lives”
 sound, stress and intonation are applied to the input text which is also a very complex task.
 
 
-A rule based technique is designed in \cite{elovitz1976automatic}. The dataset is developed by extracting
+A technique based on letter to sound for speech recognition is developed in \cite{elovitz1976automatic}. Total 329 letters to sound rules have
+been created. These rules take input as text and translate it into phonetic alphabet which in turn converted to synthetic sound.
+This system produces about 97\% correct pronunciation of phonemes. The paper also describes software and hardware
+requirement and overall performance statistics of this system.
+
+The dataset is developed by extracting
 50,000 words from standard Corpus, Corpus of Present-Day Edited American English i.e. Brown
 corpus \cite{ku1967computational}. The system gave accuracy of about 93\%. A more
-improved system was proposed in \cite{carlson1982multi} and \cite{klatt1982klattalk}.
+improved system was proposed in \cite{carlson1982multi} and \cite{klatt1982klattalk}. In \cite{klatt1982klattalk}, a TTS system is developed for English and simple numerical and algebraic expressions. The system is rule based system it has 500 letters to sound rules. However, it can use pronunciation dictionary of 1500 words for exceptions. The system interface provides facility of selection of voice types (Male or Female). The word boundaries and probable
+position of phrases and clauses is analyzed by syntactic analyzer. The phoneme of words are then passed to synthetic speech
+synthesizer that convert phoneme to sounds by following extensive set of rules and rules for consonant-vowel transitions.
 
 
 Dictionary and rule based approach is used in \cite{liberman1992text} where 1000,000 words were used for training model. A TTS system with
@@ -26,13 +33,32 @@ prosody and concatenative speech parameters that were extracted through use of p
 learning methods in \cite{huang1996whistler}. A formant and Concatenative synthesis is developed in \cite{huang1997recent}
 where small segments of phonemes were concatenated to form whole speech. A training database
 was used contains about 6,000 phonetically balanced sentences recorded in natural style. In \cite{hunt1996unit}, linear regression and unit selection 
-based speech synthesis is designed using ATR Japanese database.
+based speech synthesis is designed using ATR Japanese database. These small speech units are selected against sequence of phonemes. Best
+units are selected from database with Viterbi search. This algorithm can be trained and method of training is also discussed in
+this paper. The units are selected against sequence of phonemes. The units in database can be considered as state transition network where each unit represents a different state. The cost of the system depends on target cost and cost of the concatenation of units. The each phoneme and unit is
+represented by a multi-dimensional feature vector. The target cost the weighted sum of target and target unit feature vector.
+Similarly concatenation cost is also weighted sum of sub-cost of concatenation. Cost function can be trained in two different
+ways. In Weight Space Search method, units are searched with Viterbi and distance between constructed waveform and
+natural waveform is minimized. In Regression Training, linear regression is used to choose best unit from list of all possible
+units for a given phoneme. In this algorithm, raw text is converted to phonetic strings and against each phoneme, best candidate unit from a huge database of
+speech units is selected. By concatenating these units, target waveform is generated.
 
 
 Statistical parametric speech synthesis is another approach which uses parameters to describe
 speech. In this technique, model is learned from speech data. This technique works better than
-concatenative technique. In \cite{merritt2013investigating}, author discussed shortcomings of concatenative
-synthesis and why Hidden Markov model based technique is better than concatenative.
+concatenative technique. In \cite{merritt2013investigating}, author discussed shortcomings of Hidden Markov model and majorly focused on the findings that HMM based TTS system are not better than simple concatenative TTS systems. Experiments performed and then through pairwise listening test the HMM based system evaluated. Based on the responses of qualities, model molded to tackle further situational problems. In figure \ref{fig:Merritt_tts}, architecture of this system is shown.
+\begin{center}
+	\begin{figure}[hbtp]
+		\centering
+		\includegraphics[width=\linewidth]{images/Merritt_tts.png}
+		\caption{TTS System Architecture using HMM speech synthesiser}
+		\label{fig:Merritt_tts}
+	\end{figure}
+\end{center}
+
+Experiments show that this is secondary problem. When variance is too high then smoothing has a beneficial effect as it
+reduces the variance and bring the points closer to the natural one. For future needs to work over spectral envelope over-smoothness, averaging across multiple tokens of similar speech sounds, model boundary discontinuities in the trajectory and
+inconsistencies between the different speech parameter streams \cite{merritt2013investigating}.
 
 A multi-dimensional Gaussian distribution based Hidden Markov model based Statistical parametric speech synthesis system was developed in
 \cite{yoshimura1998duration}.  In this technique, decision tree based context clustering is used for duration models clustering. The contextual factors are also considered with phone identity factors in this paper. Mel-cepstral coefficients are
@@ -65,7 +91,7 @@ generating voices and given as input to students to interpret it.
 Corpus based approach for Expressive Prosody Modeling is applied in \cite{eide2004corpus} in which
 manually produced dataset was used. To evaluate the synthesized
 speech, the output is given for testing to 32 native English speakers. For bad news, good news and
-for yes/no the accuracy is 70.2\%, 80.3\% and 84\% respectively
+for yes/no the accuracy is 70.2\%, 80.3\% and 84\% respectively.
 
 
 Tones and Break Indices ToBI are discussed on American English in \cite{pitrelli2004tobi}. Majorly
@@ -82,8 +108,11 @@ synthesis in \cite{aida2010main} where small recordings were concatenated to mak
 
 
 Hidden Markov model based approach is used in \cite{baloyi2012text} to construct
-speech synthesizer for Xitsonga which is an African language. The system received acceptability
-of 92.3%.
+speech synthesizer for Xitsonga which is an African language. The dataset used here consists of phone
+set of consonants and vowels and by using these sets, set of letter to sound rules is also prepared to be used in speech synthesis system. The main tool used for speech synthesis is HTS toolkit with other software that support to setup complete environment for text-to-speech conversion.
+The technique used in this study is HMM because the statistical parametric speech synthesis based on Hidden Markov model
+can be used to synthesize speech waveform with requiring huge dataset for training. The system received acceptability
+of 92.3\%. 
 
 
 TTS system for Fon language is designed in \cite{dagba2014text} using Multisyn algorithm
@@ -95,9 +124,13 @@ form complete speech signals.
 
 
 In \cite{ganai2016text}, hybrid text to speech converter is developed by
-concatenating benefits of HMM based TTS system and waveform based TTS system. System is
-developed using Matlab, a library of phoneme and their sound is created and waveform of audio
-and audio itself is generated using these libraries.
+concatenating benefits of HMM based TTS system and waveform based TTS system. For developing it an audio phoneme library is used. The main
+edge of developed system over other is that it produced more human like voice/speech. The experiments were took in
+matlab, a phoneme library is developed that consists of audio files and dictionary of words with their phoneme. Sentence is
+taken as input then model parsed it into words. The system analyze each word get its phoneme and combine all phonemes
+and plays the sound. Waveform for each sound is also presented. This sub-ban speech synthesized approach is obtained by
+this combination of models that improved the quality of synthesized speech. The current model is not good enough, in future
+system will be improved to get better controls.
 
 
 A more advance technique in Neural Network based technique as it works better than Hidden
@@ -107,13 +140,13 @@ speech recording, speech labelling, voice coder and input processing using Time 
 Network. The figure \ref{fig:Time Domain Neural Network based TTS System} shows the block diagram of system.
 
 \begin{center}
-\begin{figure}[hbtp]
-\centering
-  \includegraphics[width=\linewidth]{images/time_domain_neural_network.jpg}
-  \caption{Time Domain Neural Network based TTS System}
-  \label{fig:Time Domain Neural Network based TTS System}
-\end{figure}
-
+	\begin{figure}[hbtp]
+		\centering
+		\includegraphics[width=\linewidth]{images/time_domain_neural_network.jpg}
+		\caption{Time Domain Neural Network based TTS System}
+		\label{fig:Time Domain Neural Network based TTS System}
+	\end{figure}
+		
 \end{center}
 
 Neural network based techniques are used to learn features automatically during training along with the combination of various techniques 
@@ -143,13 +176,12 @@ Neural Networks is used in \cite{wu2016merlin} with dataset consisting of 328 ho
 voice of native 1506 speakers. The model is tested by giving 20 sets of randomly selected from
 evaluation set and asked them to rate output of each set between 0 and 100.
 
+Natural Language Processing unit is very importing unit in speech synthesis system as it handle all language related issues.
+This unit performs a list of steps for its complete operation which contains tokenization, semantic tagging, string generation,
+syllabification, stress and intonation marking etc. 
 
-For Urdu Language, \cite{saleem2002urdu} and \cite{urdu_text_preprocessing} described Natural
-Language Processing (NLP) unit for Urdu TTS. NLP unit is divided in two parts called as preprocessing and phonological processing unit. Pre-processing unit converts number, date and time
-into their respective literal strings. For example, 100 and 5-11-2002 will be converted into \texturdu{سو} and \texturdu{پانچ نومبر دو ہزار دو} respectively. Special symbols like \$ and & are also handled in pre-processing unit. Last stage of pre-processing unit is grapheme into phoneme convertor. Phonological
-processing unit contains syllable marker which marks syllable boundaries and stress and
-intonation markers mark stress and intonation. A speech corpus is developed using 10 hours recorded speech of professional 
-speaker containing of 1036 sentences in \cite{mumtaz2016break}. Globalphone which is a database of multilingual types is elaborated in \cite{schultz2002globalphone}. This
+\cite{saleem2002urdu} and \cite{urdu_text_preprocessing} discuss such unit for Urdu language. This unit is divided in two parts called as preprocessing and phonological processing unit. Pre-processing unit converts number, date and time into their respective literal strings. For example, 100 and 5-11-2002 will be converted into \texturdu{سو} and \texturdu{پانچ نومبر دو ہزار دو} respectively. Special symbols like \$ and & are also handled in pre-processing unit. Last stage of pre-processing unit is grapheme into phoneme convertor. Phonological processing unit contains syllable marker which marks syllable boundaries and stress and
+intonation markers mark stress and intonation. A speech corpus is developed using 10 hours recorded speech of professional speaker containing of 1036 sentences in \cite{mumtaz2016break}. Globalphone which is a database of multilingual types is elaborated in \cite{schultz2002globalphone}. This
 database contains high quality voice vocabulary which can be used for voice recognition and text to speech system. It
 contains dataset of consisting more than 300 hours in voice of 1500 native speakers. It mainly cover English, Arabic,
 Japanese, Turkish and 11 more languages. Scientific work done on Urdu language is limited mainly due to the reason that
@@ -166,21 +198,79 @@ System for Urdu and Sindhi is designed in \cite{shah2004bi} using
 bilingual hybrid knowledge based approach by using concatenated synthesis method which is capable of providing high quality 
 Urdu and Sindhi speech. This system can be further expanded to include sensitive and visual text-to-speech (VTTS) policies in future.
 
-(Hussain, S.
-2005) discussed Phonological Processing unit for Urdu language in detail. This module applies
+Phonological Processing unit for Urdu language is discussed in detail in \cite{hussain2005phonological}. This module applies
 letter to sound rules, syllabification to the normalized text. This is followed by stress and intonation
 marker. Statistical based part of speech tagger for
-Urdu language is discussed in \cite{anwar2007statistical}. The model is evaluated by comparison of unigram, bigram and backoff
-experiments with small and large tag sets. t-test, POS accuracy are used to measure performance.
+Urdu language is discussed in \cite{anwar2007statistical}. This is done by calculating probability of each word given a particular tag. Unigram model assign tag for each token that has the maximum probability. Conditional probability for given tags against each word using maximization principle as used in \cite{bird2007introduction} and \cite{carlberger1999implementing}. The model is evaluated by comparison of Unigram, Bigram and Backoff experiments with small and large tag sets. t-test, POS accuracy are used to measure performance. Bigram model considered maximum likelihood principle keeping an
+eye on the context of text. Backoff model was used to blow away sparse problems. In \cite{anwar2007statistical} small tagset was
+comprised of 90 tags and large of 250 tags. They applied tags out of all possible tags for a particular word set accurately. It
+gave
+
+\begin{itemize}
+	\item 94.3\% accuracy for small tag set when Unigram model is used
+	\item 88.50\% accuracy for small tag set when Bigram model is used
+	\item 95.00\% accuracy for small tag set when Backoff model is used
+	\item 91.10\% accuracy for large tag set when Unigram model is used
+	\item 83.70\% accuracy for large tag set when Bigram model is used
+	\item 91.65\% accuracy for large tag set when Backoff model is used
+\end{itemize}
+
+Overall method was 95\% efficient. Data was not automatically tagged in \cite{anwar2007statistical} rather it was tagged by human
+intervention. There is larger gap for accuracy to be higher using some other methods of training data.
 
 Problems in Urdu segmentation are discussed for Urdu in \cite{durrani2010urdu}. Clause boundary identification is discussed in 
 \cite{parveen2011clause} using classifier
 and clause markers in Urdu language using conditional Random Field as a classifier. HMM based TTS system for
-Urdu language using HTS toolkit is designed in \cite{ahmed2014hmm} and \cite{nawaz2014hidden}. 
+Urdu language using HTS toolkit is designed in \cite{ahmed2014hmm} and \cite{nawaz2014hidden}. In \cite{ahmed2014hmm}, the speech corpus is created by recording 1 hour and 15 minutes of speech. The corpus contains 989 sentences in total. The speech is recorded by microphone in quiet room at 16 kHz sampling frequency. In training phase context level, prosody level parameters labels are extracted from recorded sentences e.g. counts, position, distances, stress and phone utterance information. F0 excitation parameter and mel-cepstral coefficients are calculated using RAPT \cite{kleijn1995speech}. The F0 is modeled using frequency
+distributions discrete for unvoiced and continuous for voiced regions. These HMM models are then clustered using decision
+trees. In synthesis module the input text is labeled and then by speech synthesis algorithm, it generates speech features which
+are passed to filter to obtain speech signal. As we know that TTS systems have to follow to basic sub processes text analysis
+and speech synthesis. In text analysis first the text contains numerals and abbreviations is preprocessed and converted to full
+textual forms. The date/time and numeric notations are processed using regular expressions (rule based component) and
+abbreviation are converted to text by finding their corresponding words from dictionary. Next diacritic restoration starts for
+this dictionary develop by CRULP (\cite{crulp}) is used along with customized recorded Urdu words. But this dictionary
+deal with diacritic problem that was discussed in intro section to solve this Part of speech tagging can be used but it does not
+serve for difficult problems. In this paper more context information is provided to deal with this issue. After diacritics input is
+converted to phoneme, for this G2P converter which follows guidelines of \cite{hussain2004sound}. The model use 36
+consonants and 10 vowels. All speech recording in corpus are converted to their phoneme representation and saved in
+pronunciation dictionary after checking by author. During speech synthesis dictionary get priority over G2P converter
+because it is more accurate. After this whole processing on data the speech synthesizer come to action, it uses straight
+vocoder to estimate speech parameters and generation of speech waveform. 680 questions were gathered by using spectrum
+and context features, speech parameter were generated using maximum likelihood criteria. For testing author listened to
+synthetic speech himself and found that it is not intelligible. With usage of such small database and resources it is not
+surprising. The results show that the synthetic speech is close to original in listening but in higher speech rate then recorded
+one. It is assumed that this problem may occur due to incorrect duration modeling or may be due to less example points or
+may due to absence of syllable information. For statistical models, main concern was over smoothing because it reduces the
+variance. In future the model is improved by using large database and syllable information. Also set of at least 1000 words
+with their phoneme sounds will be used for G2P evaluation.
 
-% \section{Techniques used for TTS}
+In \cite{nawaz2014hidden}, author focused on development Urdu TTS system. In TTS system a language in text form is
+converted to equivalent sound waveform, many systems have been designed until now such as TTS system with selection
+synthesis, HMM model based TTS system and parametric approach based TTS system. A text to speech system consists of
+two processes, first is text analysis and training of system and other is synthesis of speech. Here feature extraction and
+calculation of mel-cepstral coefficient is extracted by technique mentioned in \cite{fukada1992adaptive} and text processing is done using \cite{kabir2002natural}. The process of synthesis is done using process described in \cite{tokuda2000speech}. They have developed TTS system by
+using HMM and HTS toolkit by using recorded Urdu qaida of grade 2 and 4, the duration of recording is 30 minutes. The
+recording is done in minimal noisy environment. The HTS toolkit is available for English, Japanese and Portuguese
+languages, so for Urdu certain modifications are needed which were discussed in this paper. The modifications involve
+creation of context level labels and questions file for Urdu phoneme set. In this paper frequent speaking Urdu words were
+also identified by using greedy algorithm. In this paper question files are also made to deal with the issue of data sparsity as
+we know in a model we can handle certain amount of examples during training phase if we look on to the contextual level it
+is observed that multiple contextual occurrences exist for a single phoneme. To deal with this a clustering method is used
+which cluster similar acoustic words in one cluster or we can say closely related contexts are converted to sound by using
+single model. The whole training set is placed into single cluster and then split one by one by executing binary questions. The
+question which minimizes the objective function is selected and remaining questions are then asked to remaining clusters
+until stopping condition reached. The testing is done and naturalness and intelligibility is measured. The experiment was
+performed by using 200 frequent Urdu words and for evaluation two expert listeners and 1 native listener is invited. The
+testing shows that the system give output which is intelligible which means that it is convenient to understand but its
+naturalness is very low, the reason behind this is data used in training phase. The data used consists of full sentences rather
+than words if words were used than performance with respect to naturalness will be improved because of clarity and length of
+word. It is found that 92.5\% words are correctly identified. The system has taken 66 phoneme but for better performance at
+least 270 examples should provide to system during training phases. The set also have greater frequency of vowels and
+consonants such as J\_H, L\_H etc were ignored. The system has taken 66 phoneme but for better performance at least 270
+examples should provide to system during training phases. The set also have greater frequency of vowels and consonants
+such as J\_H, L\_H etc were ignored. In future the system is improved by taking in account above limitation and also 10-hour
+recording by professional will be used.
 
-% \subsection{Concatenative Synthesis Model}
 Concatenative speech synthesis is the model of speech synthesis where waveform is generated using concatenation of small units. In \cite{lemmetty1999review} the process of speech synthesis is divided into High-level and Low-level synthesis. In High-level, text is converted into phonetic strings. Low-level synthesis process is done by Articulatory, Concatenative and Formant based synthesis. In formant based speech synthesis, resonances in the vocal tract is modeled and this technique was widely used in
 past. In concatenative synthesis, prerecorded speech samples are concatenated to form complete speech signals \cite{pickett1999acoustics}.
 
@@ -205,4 +295,9 @@ The MRT error rate for test was 5.0\% and standard error rate was 0.47\%. Segmen
 \\ \\
 A system has been proposed where phoneme HMM is used to model spectra sequence in \cite{masuko1996speech}.
 \\ \\
-The statisticalparametric speech synthesis system can change voice characteristics of speech by speaker adaptation technique \cite{tamura1998speaker} and speaker interpolation technique \cite{yoshimura2001speaker}.
+The statistical parametric speech synthesis system can change voice characteristics of speech by speaker adaptation technique \cite{tamura1998speaker} and speaker interpolation technique \cite{yoshimura2001speaker}.
+
+The Hidden Markov Model statistical parametric text-to-speech system can model speech parameters like spectrum or excitation with the help of context-dependent HMM and construct speech signals. Version 2.0 of already build HMM based text to speech system (HTS) toolkit is presented in \cite{zen2007hmm}.
+
+Hidden Markov model based speech synthesis system can be used to build speech synthesis system without needing huge dataset for training \cite{huang2001spoken}. The quality if that speech is not equal to recorded speech. HMM based speech synthesis can be used to change voice
+characteristics of speech. 
