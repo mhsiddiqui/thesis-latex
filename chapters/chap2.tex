@@ -23,22 +23,45 @@ requirement and overall performance statistics of this system.
 The dataset is developed by extracting
 50,000 words from standard Corpus, Corpus of Present-Day Edited American English i.e. Brown
 corpus \cite{ku1967computational}. The system gave accuracy of about 93\%. A more
-improved system was proposed in \cite{carlson1982multi} and \cite{klatt1982klattalk}. In \cite{klatt1982klattalk}, a TTS system is developed for English and simple numerical and algebraic expressions. The system is rule based system it has 500 letters to sound rules. However, it can use pronunciation dictionary of 1500 words for exceptions. The system interface provides facility of selection of voice types (Male or Female). The word boundaries and probable
+improved system was proposed in \cite{carlson1982multi} and \cite{klatt1982klattalk}. 
+In \cite{klatt1982klattalk}, a TTS system is developed for English and simple numerical and algebraic expressions. 
+The system is rule based system it has 500 letters to sound rules. However, it can use pronunciation dictionary of 1500 words for exceptions. 
+The system interface provides facility of selection of voice types (Male or Female). The word boundaries and probable
 position of phrases and clauses is analyzed by syntactic analyzer. The phoneme of words are then passed to synthetic speech
-synthesizer that convert phoneme to sounds by following extensive set of rules and rules for consonant-vowel transitions.
+synthesizer that convert phoneme to sounds by following extensive set of rules and rules for consonant-vowel transitions. 
+TTS system is divided in two sub processes, text analysis (conversion of text to
+corresponding linguistic representation that comprises of phoneme, stress and boundaries and positions of respective vowel
+or consonant and durational phenomena such as pauses, interaction between segments \cite{klatt1979synthesis} and other one is
+speech synthesis in which sequence of phoneme are converted to speech sound by following set of rules. The input data is
+preprocessed, the words which are abbreviations are converted to their text and if dictionary does not have their respective
+words the abbreviation is pronounced as word. After preprocessing the words are exposed to letter to sound rules, 500 rules
+were formulated, the rules are formulated by considering linguistic principles. If an unstressed function appear in text and
+there is no rule for it then it is passed to pronunciation dictionary. The results show that about 95\% rules were successful
+when executed. The syntactic analyzer then determines the structure of sentence according to its pauses and boundaries. A
+powerful syntactic analyzer is not used in this system because semantic are more considered. The phoneme to speech rules
+are divided into two components phonological that provide information of stress, rhythm and duration of words in a sentence.
+All these outputs are then passed to synthesizer that produces synthetic sound. Synthesizer is simple version of \cite{klatt1980software}.
 
 
-Dictionary and rule based approach is used in \cite{liberman1992text} where 1000,000 words were used for training model. A TTS system with
-prosody and concatenative speech parameters that were extracted through use of probabilistic
-learning methods in \cite{huang1996whistler}. A formant and Concatenative synthesis is developed in \cite{huang1997recent}
-where small segments of phonemes were concatenated to form whole speech. A training database
-was used contains about 6,000 phonetically balanced sentences recorded in natural style. In \cite{hunt1996unit}, linear regression and unit selection 
+Dictionary and rule based approach is used in \cite{liberman1992text} where 1000,000 words were used for training model. 
+
+
+In \cite{huang1996whistler}, Whistler which is a Text-to-Speech engine developed by using prosody and
+concatenative speech parameters that were extracted through use of probabilistic learning methods. Whistler engine produce
+speech which appears to be very much real. This system can also help to build TTS system for other languages.
+
+
+A formant and Concatenative synthesis is developed in \cite{huang1997recent}
+where small segments of phonemes were concatenated to form whole speech. A training database was used contains about 6,000 phonetically balanced sentences recorded in natural style. The technologies used in whistler can considerably facilitate the
+process of creating generic TTS system for new speech style. This engine supports MS Speech and requires less than 3 MB memory.
+
+In \cite{hunt1996unit}, linear regression and unit selection 
 based speech synthesis is designed using ATR Japanese database. These small speech units are selected against sequence of phonemes. Best
-units are selected from database with Viterbi search. This algorithm can be trained and method of training is also discussed in
+units are selected from database with \textit{Viterbi} search. This algorithm can be trained and method of training is also discussed in
 this paper. The units are selected against sequence of phonemes. The units in database can be considered as state transition network where each unit represents a different state. The cost of the system depends on target cost and cost of the concatenation of units. The each phoneme and unit is
 represented by a multi-dimensional feature vector. The target cost the weighted sum of target and target unit feature vector.
 Similarly concatenation cost is also weighted sum of sub-cost of concatenation. Cost function can be trained in two different
-ways. In Weight Space Search method, units are searched with Viterbi and distance between constructed waveform and
+ways. In Weight Space Search method, units are searched with \textit{Viterbi} and distance between constructed waveform and
 natural waveform is minimized. In Regression Training, linear regression is used to choose best unit from list of all possible
 units for a given phoneme. In this algorithm, raw text is converted to phonetic strings and against each phoneme, best candidate unit from a huge database of
 speech units is selected. By concatenating these units, target waveform is generated.
