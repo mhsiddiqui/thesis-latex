@@ -329,3 +329,77 @@ The Hidden Markov Model statistical parametric text-to-speech system can model s
 
 Hidden Markov model based speech synthesis system can be used to build speech synthesis system without needing huge dataset for training \cite{huang2001spoken}. The quality if that speech is not equal to recorded speech. HMM based speech synthesis can be used to change voice
 characteristics of speech. 
+
+
+\section{Discussion}
+Raw text can be converted into speech by concatenation of small units of speech from a huge single-speaker speech database.
+Huge database makes it possible to produce more natural sound. TTS system development can be based on rules for
+generation of speech but this method can take intensive labor and rules are
+difficult to be general so that they can be used for other languages as well. In prosody modeling, linguistic rules are used
+\cite{klatt1987review} \cite{pierrehumbert1981synthesizing} but speech produce by these rule based prosody models felt to be robotic. So
+for naturalness of voice unit method are used. This method not only improved naturalness but also decreased required time to
+generate new voice and also made the synthetic speech similar to original donor speaker.
+
+In TTS system a language in text form is converted to equivalent sound waveform, many systems have been designed until
+now such as TTS system with selection synthesis, HMM model based TTS system and parametric approach based TTS
+system. The best approach for speech synthesis until now is considered to selection synthesis but it has certain limitation that
+is it need large database of recording which is very expensive and not feasible for certain languages \cite{black1994chatr}, \cite{hunt1996unit} and 
+\cite{black2003unit}. HMM on the other hand is becoming popular and being used for number of languages like English \cite{tokuda2002hmm}, Chinese \cite{qian2006hmm}, 
+Arabic \cite{abdel2006improving}, Croatian \cite{martincic2006croatian} and
+Urdu \cite{ahmed2014hmm}. The advantage of parametric over selection is that it does not require saving original signal for
+synthesis due to which database is small for this approach (Zen., et.al, 2009). Basic Text to Speech or TTS system focus over
+conversion of text to voice using multiple techniques \cite{merritt2013investigating}. Different synthesis model has been
+developed but HMM is becoming popular from last few years. HMM model has gained popularity because it produces high
+quality speech automatically with parametric flexibility and less data and resources \cite{black2007statistical}. Hidden
+Markov model based statistical parametric speech synthesis become very popular in last few years \cite{ze2013statistical}. There
+are multiple tools for TTS but freely available tools mostly use 2 techniques i.e.
+
+\begin{enumerate}
+	\item Hidden Markov Model based speech synthesis called SPSS
+	\item Simple waveform concatenation.
+\end{enumerate}
+
+SPSS technique is attractive although its results are comparatively not amazing. By \cite{donovan1999hidden} in recent years, 
+the use of statistical modeling in speech recognition system has increased a lot and most of these
+systems are using Hidden Markov Model for acoustic modeling of the system. These systems enable us to construct models
+with large amount of data that is difficult to analyze manually. This technique can be applied on the process of speech
+synthesis. This type of system can be used to run on different data, voices and languages \cite{donovan1999hidden}. 
+There are many speech synthesis systems which can generate high quality speech but they still cannot generate speech
+with different speaking style and voice because large amount of speech data is required in order to get these characteristics.
+This can be achieved using HMM based speech synthesis system (Tokuda et.al 2002). Statistical learning techniques can be
+used to build a speech synthesis system. These systems can be trained and voice characteristics of original speaker can be
+produced in synthesized speech. This type of system can be built with Hidden Markov model and its performance can be
+improved by techniques like context-dependent modeling and environment adaptation techniques \cite{tokuda2000speech}. It has
+many advantages like ability to change voice characteristics and robustness which will be very difficult in concatenative
+speech synthesis. But it has some limitations like inefficiency in handling complicated context ascendancies \cite{ze2013statistical}. 
+Most popular speech synthesis technique is unit selection where small units of recorded speech are concatenated in
+order to synthesize speech waveform. This technique is capable of generating high quality speech signals but for getting
+various characteristics of synthesized speech, a huge database is required but the Hidden Markov model based statistical
+parametric text-to-speech system can generate speech signals with various voice characteristics without requiring huge
+database \cite{zen2007hmm}. There is a lot work on TTS system using HMM techniques. In spite of lot of work the output
+voices produced by these kinds of systems look unnatural sometimes. It is surprising that by the time this should be improved
+a lot but there are still existing problems and drawbacks that decrease the performance of TTS system, as compared to other
+simpler concatenation based TTS systems. Through literature review it is easy to say that HMM system do over smoothing
+which cause unnaturalness for TTS System output. There is no proper study which can prove this hypothesis so \cite{merritt2013investigating} 
+present the reasons for this unnatural behavior \cite{merritt2013investigating}.
+
+
+From last few years there is a working over TTS systems using multiple techniques. Previously statistical techniques were
+used for this kind of system, Different text to speech systems have been purposed each have its own pros and cons for
+example waveform based model is good enough it can produced human like sound but for this it requires large database and
+in rule based techniques most of the time rules updation is required and novelty is too much difficult with traditional rules.
+Similarly concatenation of phonemes is also difficult to bring novelty and handle new and unseen words \cite{karaali1998text} and \cite{pitrelli2004tobi}. 
+Now there is a need to use neural network for TTS system to improve the results \cite{muthukumar2016recurrent}. 
+Multiple neural networks based techniques exist which are based on HMM and have dominated acoustic
+modeling through neural networks \cite{tokuda2013speech}. From recent years neural networks are being used as acoustic models \cite{ling2015deep} and \cite{zen2015acoustic}. 
+There exist a wide research over the correlation between acoustic modeling and linguistic
+features in late 90's \cite{cawley1993lsp}. Now more focus is on deep neural networks. These
+networks easily map linguistic features to acoustic models using feed forward approach \cite{lu2013combining}, \cite{qian2014training}, \cite{chen2015deep} and 
+\cite{ze2013statistical}. ANN based model have
+ability to provide smooth output by using small database of words and phoneme \cite{ganai2016text}. Paper \cite{muthukumar2016recurrent} 
+is purely focused over complete use of DNN for TTS with amazing results. Ganai and Arora (2016) presented a system that gets input and find out 
+respective phoneme. The main problem
+occurs here is discontinuity in high band, it affects speech synthesis. For that ANN and waveform both method are used \cite{ganai2016text}. 
+Fan et.al (2014) used Recurrent Neural Network using Bidirectional Long Short Term Memory
+(BLSTM). The older techniques are good but this hybrid approach improved the results of experiments and can fetch deep
+information easily \cite{fan2014tts}.
