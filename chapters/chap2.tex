@@ -3,29 +3,34 @@
 The TTS conversion is not a new field and people have been working on this field before electronic
 signal processing techniques. In beginning, people tried to build machines which were used to
 create human sound. After the development of computers, better systems were built using different
-techniques. In \cite{swetha2013text}, basic speech synthesizing technique
+techniques. In \cite{swetha2013text}, basic speech synthesizing technique are discussed 
 which works by concatenation of small recorded speech segments called phonemes to form
-complete speech are discussed. Each word is first divided into syllables and then pronunciation for each syllable
+complete speech. Each word is first divided into syllables and then corresponding voice signal for each syllable
 is concatenated in order to get pronunciation for whole word. This concatenated word has some
-delay between pronunciations of each syllable which is removed and as a result, final
+delay between pronunciations of each syllable which is removed and as a result of which final
 pronunciation of that word is obtained. Problems like Text Preprocessing, Pronunciation and
 Prosody makes it difficult. In Text Preprocessing, digits and abbreviations are converted to full
 words. Other problem is guessing correct pronunciation of a word. For example, word “lives” has
 different pronunciation in “He lives in Lahore” and “He saved two lives”. To create naturalness in
 sound, stress and intonation are applied to the input text which is also a very complex task.
 
+Two sub parts of text-to-speech system Text analysis and word pronunciation were discussed in \cite{liberman1992text}. 
+TTS system is divied in 4 sub parts: text analysis, word pronunciation, phonetic interpretation and signal
+generation. Text analysis step included division of text into sentences, words, phrases and expansion of abbreviations etc.
+two main reason for text analysis were given on is use of letters in words in different contexts, and the other reason is its use
+in pitch and amplitude modulating. In text analysis, sentence division and part of speech tagging is done by using heuristic solutions \cite{riley1989some}
+and dynamic programming respectively. For word pronunciation, hybrid natured approach was used in which dictionary method is used for about 99.9\%
+words and for only 0.1\% words which are mostly unstressed syllables, letter to sound rules were followed. 
 
-A technique based on letter to sound for speech recognition is developed in \cite{elovitz1976automatic}. Total 329 letters to sound rules have
-been created. These rules take input as text and translate it into phonetic alphabet which in turn converted to synthetic sound.
+A technique based on letter to sound rules is also developed in \cite{elovitz1976automatic}. Total 329 letters to sound rules have
+been created. These rules take text as input and translate it into phonetic alphabet which in turn converted to synthetic sound.
 This system produces about 97\% correct pronunciation of phonemes. The paper also describes software and hardware
-requirement and overall performance statistics of this system.
-
-The dataset is developed by extracting
+requirement and overall performance statistics of this system. The dataset is developed by extracting
 50,000 words from standard Corpus, Corpus of Present-Day Edited American English i.e. Brown
 corpus \cite{ku1967computational}. The system gave accuracy of about 93\%. A more
 improved system was proposed in \cite{carlson1982multi} and \cite{klatt1982klattalk}. 
 In \cite{klatt1982klattalk}, a TTS system is developed for English and simple numerical and algebraic expressions. 
-The system is rule based system it has 500 letters to sound rules. However, it can use pronunciation dictionary of 1500 words for exceptions. 
+The system is rule based system having 500 letters to sound rules. However, it can use pronunciation dictionary of 1500 words for exceptions. 
 The system interface provides facility of selection of voice types (Male or Female). The word boundaries and probable
 position of phrases and clauses is analyzed by syntactic analyzer. The phoneme of words are then passed to synthetic speech
 synthesizer that convert phoneme to sounds by following extensive set of rules and rules for consonant-vowel transitions. 
@@ -37,10 +42,11 @@ preprocessed, the words which are abbreviations are converted to their text and 
 words the abbreviation is pronounced as word. After preprocessing the words are exposed to letter to sound rules, 500 rules
 were formulated, the rules are formulated by considering linguistic principles. If an unstressed function appear in text and
 there is no rule for it then it is passed to pronunciation dictionary. The results show that about 95\% rules were successful
-when executed. The syntactic analyzer then determines the structure of sentence according to its pauses and boundaries. A
-powerful syntactic analyzer is not used in this system because semantic are more considered. The phoneme to speech rules
+when executed. The syntactic analyzer then determines the structure of sentence according to its pauses and boundaries. The phoneme to speech rules
 are divided into two components phonological that provide information of stress, rhythm and duration of words in a sentence.
 All these outputs are then passed to synthesizer that produces synthetic sound. Synthesizer is simple version of \cite{klatt1980software}.
+
+
 In \cite{carlson1982multi}, a text to speech system is presented which require some hardware resources as well with the enhancements in microprocessor, 
 memory and signal processor technology. This TTS system can be put into portable form and can be used anywhere with different systems. A higher level language is
 developed in laboratory that can be easily used for linguistic processes. These enhancements and developments in hardware
@@ -48,29 +54,20 @@ and software level made transforming of text to speech at 250 wpm rate. This com
 against several applications used for handicaps. The main purpose of this system is to make a framework that will
 be used for conversion of any language text to speech.
 
-Dictionary and rule based approach is used in \cite{liberman1992text} where 1000,000 words were used for training model. 
-
 
 In \cite{huang1996whistler}, Whistler which is a Text-to-Speech engine developed by using prosody and
 concatenative speech parameters that were extracted through use of probabilistic learning methods. Whistler engine produce
 speech which appears to be very much real. This system can also help to build TTS system for other languages.
 
 
-A formant and Concatenative synthesis is developed in \cite{huang1997recent}
+A formant and concatenative synthesis is developed in \cite{huang1997recent}
 where small segments of phonemes were concatenated to form whole speech. A training database was used contains about 6,000 phonetically balanced sentences recorded in natural style. The technologies used in whistler can considerably facilitate the
 process of creating generic TTS system for new speech style. This engine supports MS Speech and requires less than 3 MB memory.
 
 In \cite{hunt1996unit}, linear regression and unit selection 
-based speech synthesis is designed using ATR Japanese database. These small speech units are selected against sequence of phonemes. Best
-units are selected from database with \textit{Viterbi} search. This algorithm can be trained and method of training is also discussed in
-this paper. The units are selected against sequence of phonemes. The units in database can be considered as state transition network where each unit represents a different state. The cost of the system depends on target cost and cost of the concatenation of units. The each phoneme and unit is
-represented by a multi-dimensional feature vector. The target cost the weighted sum of target and target unit feature vector.
-Similarly concatenation cost is also weighted sum of sub-cost of concatenation. Cost function can be trained in two different
-ways. In Weight Space Search method, units are searched with \textit{Viterbi} and distance between constructed waveform and
+based speech synthesis is designed using ATR Japanese database. In this algorithm, raw text is converted to phonetic strings and against each phoneme, best candidate unit from a huge database of speech units is selected with \textit{Viterbi} search. By concatenating these units, target waveform is generated. The units in database can be considered as state transition network where each unit represents a different state. The cost of the system depends on target cost and cost of the concatenation of units. The each phoneme and unit is represented by a multi-dimensional feature vector. The target cost is measured by the weighted difference of target and candidate feature vector. Similarly concatenation cost is also weighted sum of sub-cost of concatenation. Cost function can be trained in two different ways. In Weight Space Search method, units are searched with \textit{Viterbi} and distance between constructed waveform and
 natural waveform is minimized. In Regression Training, linear regression is used to choose best unit from list of all possible
-units for a given phoneme. In this algorithm, raw text is converted to phonetic strings and against each phoneme, best candidate unit from a huge database of
-speech units is selected. By concatenating these units, target waveform is generated.
-
+units for a given phoneme. 
 
 Statistical parametric speech synthesis is another approach which uses parameters to describe
 speech. In this technique, model is learned from speech data. This technique works better than
