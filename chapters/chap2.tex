@@ -52,13 +52,12 @@ memory and signal processor technology. This TTS system can be put into portable
 developed in laboratory that can be easily used for linguistic processes. These enhancements and developments in hardware
 and software level made transforming of text to speech at 250 wpm rate. This combination of hardware and software is tested
 against several applications used for handicaps. The main purpose of this system is to make a framework that will
-be used for conversion of any language text to speech.
-
+be used for conversion of any language text to speech. A TTS system for Azerbhaijani language is developed using concatenative
+synthesis in \cite{aida2010main} where small recordings were concatenated to make speech waveform.
 
 In \cite{huang1996whistler}, Whistler which is a Text-to-Speech engine developed by using prosody and
 concatenative speech parameters that were extracted through use of probabilistic learning methods. Whistler engine produce
 speech which appears to be very much real. This system can also help to build TTS system for other languages.
-
 
 A formant and concatenative synthesis is developed in \cite{huang1997recent}
 where small segments of phonemes were concatenated to form whole speech. A training database was used contains about 6,000 phonetically balanced sentences recorded in natural style. The technologies used in whistler can considerably facilitate the
@@ -70,24 +69,12 @@ natural waveform is minimized. In Regression Training, linear regression is used
 units for a given phoneme. 
 
 Statistical parametric speech synthesis is another approach which uses parameters to describe
-speech. In this technique, model is learned from speech data. This technique works better than
-concatenative technique. In \cite{merritt2013investigating}, author discussed shortcomings of Hidden Markov model and majorly focused on the findings that HMM based TTS system are not better than simple concatenative TTS systems. Experiments performed and then through pairwise listening test the HMM based system evaluated. Based on the responses of qualities, model molded to tackle further situational problems. In figure \ref{fig:Merritt_tts}, architecture of this system is shown.
-\begin{center}
-	\begin{figure}[hbtp]
-		\centering
-		\includegraphics[width=\linewidth]{images/Merritt_tts.png}
-		\caption{TTS System Architecture using HMM speech synthesiser}
-		\label{fig:Merritt_tts}
-	\end{figure}
-\end{center}
+speech \cite{king2010beginners}. This technique works better than
+concatenative technique on smaller data. On larger data, concatenative synthesis can produce better quality speech. In this technique, Hidden Markov model (HMM) or model firmly related to HMM are used for training model over given data. Hidden Markov model (HMM) based statistical parametric speech synthesis has gained popularity because of its ability to produces high quality speech automatically with parametric flexibility and less data and resources \cite{black2007statistical}.
 
-Experiments show that this is secondary problem. When variance is too high then smoothing has a beneficial effect as it
-reduces the variance and bring the points closer to the natural one. For future needs to work over spectral envelope over-smoothness, averaging across multiple tokens of similar speech sounds, model boundary discontinuities in the trajectory and
-inconsistencies between the different speech parameter streams \cite{merritt2013investigating}.
-
-A multi-dimensional Gaussian distribution based Hidden Markov model based Statistical parametric speech synthesis system was developed in
-\cite{yoshimura1998duration}.  In this technique, decision tree based context clustering is used for duration models clustering. The contextual factors are also considered with phone identity factors in this paper. Mel-cepstral coefficients are
-calculated and model is trained by these coefficients. State of the context dependent is clustered using decision tree based
+A multi-dimensional Gaussian distribution based Hidden Markov model based statistical parametric speech synthesis system was developed in
+\cite{yoshimura1998duration}.  In this technique, decision tree based context clustering is used for duration models clustering. The contextual factors are also considered with phone identity factors. Mel-cepstral coefficients are
+calculated and model is trained by these coefficients. State of the context dependent HMMs is clustered using decision tree based
 context clustering technique \cite{odellj.j1995}. In state duration modeling, multi-dimensional Gaussian distributions are
 used to model Hidden Markov model. After estimation of duration models, using decision tree based clustering techniques,
 they are clustered. By traversing decision tree, all contexts can be searched. Contextual factors which effects timing of
@@ -100,65 +87,68 @@ some degree.
 A similar system is designed in \cite{tokuda2000speech} using Hidden Markov Model and evaluated it by taking input
 from Japanese database and by generating feature vector of those sentences and compared with
 original speech. The parameters in this system are generated with Hidden
-Markov model. The state sequence fully or partially is hidden due to which iterates algorithm for parameter generation and
-forward-backward algorithm for the situation where state sequence is provided. This algorithm, from multi-mixture HMMs,
+Markov model. The state sequence fully or partially is hidden due to which iterations are performed for parameter generation and
+forward-backward algorithm is used for the situation where state sequence is provided. This algorithm, from multi-mixture HMMs,
 can generate clear formant structure.
 
-
-A Hidden Markov model and unit selection based system is proposed in \cite{tokuda2002hmm} in which model is trained with speech database containing 
-recorded speech as training data and some parameters (excitation and spectral) are extracted. These parameters are modeled by context dependent HMM. To find
+A Hidden Markov model and unit selection based system is proposed in \cite{tokuda2002hmm} in which model is trained with speech database and excitation and spectral parameters are extracted. These parameters are modeled by context dependent HMMs. To find
 accurate model parameters, decision tree based context clustering is used. The parameters are then used to generate speech
 signals. These parameters can be used to control speech characteristics. In \cite{harashima2006review}, Hidden Markov model and rule based approach is applied 
 on voices taken from e-learning courses and online lessons for dataset creation and tested by
 generating voices and given as input to students to interpret it.
 
-
-Corpus based approach for Expressive Prosody Modeling is applied in \cite{eide2004corpus} in which
+Corpus based approach for Expressive Prosody Modeling is applied in \cite{eide2004corpus} where 
 manually produced dataset was used. To evaluate the synthesized
 speech, the output is given for testing to 32 native English speakers. For bad news, good news and
 for yes/no the accuracy is 70.2\%, 80.3\% and 84\% respectively.
 
-
-Tones and Break Indices ToBI are discussed on American English in \cite{pitrelli2004tobi}. Majorly
-bi-gram and tri-gram were used to predict the occurrences of particular word or letter. Analysis
-was performed by multiple techniques. The corpus was divided into following five yes-no
-questions, either-or questions, other questions (hereafter, “wh-questions”), exclamations, and other
-declarative sentences categories for the analysis purpose. Analysis by word frequency count
-produced not good results and the reason was that the data was of variant types. The results show
-that professional speakers produces better and informative prosodic events as compared to
-ordinary speakers.
-
-A TTS system for Azerbhaijani language using concatenative
-synthesis in \cite{aida2010main} where small recordings were concatenated to make speech waveform.
-
+% Tones and Break Indices ToBI are discussed on American English in \cite{pitrelli2004tobi}. Majorly
+% bi-gram and tri-gram were used to predict the occurrences of particular word or letter. Analysis
+% was performed by multiple techniques. The corpus was divided into following five yes-no
+% questions, either-or questions, other questions (hereafter, “wh-questions”), exclamations, and other
+% declarative sentences categories for the analysis purpose. Analysis by word frequency count
+% produced not good results and the reason was that the data was of variant types. The results show
+% that professional speakers produces better and informative prosodic events as compared to
+% ordinary speakers.
 
 Hidden Markov model based approach is used in \cite{baloyi2012text} to construct
 speech synthesizer for Xitsonga which is an African language. The dataset used here consists of phone
-set of consonants and vowels and by using these sets, set of letter to sound rules is also prepared to be used in speech synthesis system. The main tool used for speech synthesis is HTS toolkit with other software that support to setup complete environment for text-to-speech conversion.
+set of consonants and vowels and by using these sets, set of letter to sound rules is also prepared to be used in speech synthesis system. The main tool used for speech synthesis is HTS toolkit \cite{hts_2.2} with other software that support to setup complete environment for text-to-speech conversion.
 The technique used in this study is HMM because the statistical parametric speech synthesis based on Hidden Markov model
 can be used to synthesize speech waveform with requiring huge dataset for training. The system received acceptability
 of 92.3\%. 
 
-
-TTS system for Fon language is designed in \cite{dagba2014text} using Multisyn algorithm
+TTS system for Fon language is designed in \cite{dagba2014text} using Multisyn algorithm \cite{clark2007multisyn}
 which consists of Natural Language Processing (NLP) and Digital Signal Processing (DSP)
 modules. NLP consists of segmentation, Letter-to-Sound conversion and back-off rules module.
 Back-off rules are applied when input text contains some characters that are not in us know
 characters. DSP module than choose required unit from database of units are concatenate them to
 form complete speech signals.
 
-
 In \cite{ganai2016text}, hybrid text to speech converter is developed by
-concatenating benefits of HMM based TTS system and waveform based TTS system. For developing it an audio phoneme library is used. The main
+concatenating benefits of HMM based TTS system and waveform based TTS system. For developing it, an audio phoneme library is used. The main
 edge of developed system over other is that it produced more human like voice/speech. The experiments were took in
-matlab, a phoneme library is developed that consists of audio files and dictionary of words with their phoneme. Sentence is
+matlab and a phoneme library is developed that consists of audio files and dictionary of words with their phoneme. Sentence is
 taken as input then model parsed it into words. The system analyze each word get its phoneme and combine all phonemes
 and plays the sound. Waveform for each sound is also presented. This sub-ban speech synthesized approach is obtained by
 this combination of models that improved the quality of synthesized speech. The current model is not good enough, in future
 system will be improved to get better controls.
 
+In \cite{merritt2013investigating}, author discussed shortcomings of Hidden Markov model and majorly focused on the findings that HMM based TTS system are not better than simple concatenative TTS systems. Experiments performed and then through pairwise listening test the HMM based system evaluated. Based on the responses of qualities, model molded to tackle further situational problems. In figure \ref{fig:Merritt_tts}, architecture of this system is shown.
+\begin{center}
+	\begin{figure}[hbtp]
+		\centering
+		\includegraphics[width=\linewidth]{images/Merritt_tts.png}
+		\caption{TTS System Architecture using HMM speech synthesiser}
+		\label{fig:Merritt_tts}
+	\end{figure}
+\end{center}
 
-A more advance technique in Neural Network based technique as it works better than Hidden
+Experiments show that this is secondary problem. When variance is too high then smoothing has a beneficial effect as it
+reduces the variance and bring the points closer to the natural one. For future, needs to work over spectral envelope over-smoothness, averaging across multiple tokens of similar speech sounds, model boundary discontinuities in the trajectory and
+inconsistencies between the different speech parameter streams \cite{merritt2013investigating}.
+
+A more advance technique is Neural Network based technique as it works better than Hidden
 Markov model based technique. Time domain neural networks with
 database containing sounds of words called phonemes is used in \cite{karaali1998text}. The basic flow of the system involves
 speech recording, speech labelling, voice coder and input processing using Time Delay Neural
@@ -173,10 +163,9 @@ Network. The figure \ref{fig:Time Domain Neural Network based TTS System} shows 
 	\end{figure}
 		
 \end{center}
-
 Neural network based techniques are used to learn features automatically during training along with the combination of various techniques 
 like linear regression and neural network in \cite{yoshimura2016hierarchical}. Dataset of all previous Blizard Challenges \cite{blizzard_2009_corpus} and
-afterwards up to 2013 were used. Model was evaluated using 5-fold cross validation. The given model gave0.11\% and 0.17\% error for LR+LR and LR+NN 
+afterwards up to 2013 were used. Model was evaluated using 5-fold cross validation. The given model gave 0.11\% and 0.17\% error for LR+LR and LR+NN 
 respectively.
 
 Deep Neural Networks is applied in place of Hidden Markov model in \cite{ze2013statistical} as HMM
@@ -189,13 +178,8 @@ utterances for testing the system. Whole recording was done in voice of female n
 Objective and subjective evaluation measures are used to find distortion between natural and
 synthesized speech and quality respectively. The preference results that hybrid system is better as
 hybrid gave 44\%, 59\% and 55\% accuracy whereas neural network, HMM and DNN gave 29\%,
-22\% and 20\% accuracy respectively.
-
-
-Recurrent Neural Network (RNN) is used in \cite{muthukumar2016recurrent} for filter for
-synthesis. Apart from that a novel approach was also used for training of Classification and
-Regression Tree jointly instead of training all these independently.
-
+22\% and 20\% accuracy respectively. In \cite{muthukumar2016recurrent} Recurrent Neural Network (RNN) postfilters 
+are used for speech synthesis. 
 
 Neural Networks is used in \cite{wu2016merlin} with dataset consisting of 328 hours was collected in
 voice of native 1506 speakers. The model is tested by giving 20 sets of randomly selected from
@@ -216,7 +200,6 @@ In \cite{urdu_tts_db_kashif2015}, Neural Networks consists of feed forward netwo
 speech synthesis system for Urdu. An interface is designed and tested. Mean Square Error of designed system is used as performance parameter. 
 The MSE is 0.00867 of proposed system. A large database consists of 59 Urdu characters, vowels and numbers is created for this system. The designed model only
 produces synthetic sound of single character. In future, urdu sentences are added to generate output in the form of full text.
-
 
 In \cite{saleem2002urdu} consonantal and vocalic sounds for Urdu Language is discussed . Bi-Lingual Text to Speech Synthesis 
 System for Urdu and Sindhi is designed in \cite{shah2004bi} using
@@ -346,8 +329,7 @@ Arabic \cite{abdel2006improving}, Croatian \cite{martincic2006croatian} and
 Urdu \cite{ahmed2014hmm}. The advantage of parametric over selection is that it does not require saving original signal for
 synthesis due to which database is small for this approach (Zen., et.al, 2009). Basic Text to Speech or TTS system focus over
 conversion of text to voice using multiple techniques \cite{merritt2013investigating}. Different synthesis model has been
-developed but HMM is becoming popular from last few years. HMM model has gained popularity because it produces high
-quality speech automatically with parametric flexibility and less data and resources \cite{black2007statistical}. Hidden
+developed but HMM is becoming popular from last few years. Hidden
 Markov model based statistical parametric speech synthesis become very popular in last few years \cite{ze2013statistical}. There
 are multiple tools for TTS but freely available tools mostly use 2 techniques i.e.
 
