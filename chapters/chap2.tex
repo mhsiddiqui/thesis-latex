@@ -135,7 +135,7 @@ this combination of models that improved the quality of synthesized speech. The 
 system will be improved to get better controls.
 
 A speech synthesis system is introduced in \cite{donovan1995improvements} which used context-dependent Hidden Markov Model
-for defining set of subphone units This system uses context-dependent Hidden Markov Model for defining set of subphone units. These subphone units are then used in concatenation synthesizer. The training data is one hour recorded speech which is used for getting required parameters. TD-PSOLA waveform concatenation synthesizer is then used to generate pronunciation using these parameters. The synthesized speech imitates the voice of the speaker used to record the preparing database. This system uses automatic statistical processes to extract segments of speech from large speech carpus. Desired sentence is produced by concatenation of small
+for defining set of subphone units. This system uses context-dependent Hidden Markov Model for defining set of subphone units. These subphone units are then used in concatenation synthesizer. The training data is one hour recorded speech which is used for getting required parameters. TD-PSOLA waveform concatenation synthesizer is then used to generate pronunciation using these parameters. The synthesized speech imitates the voice of the speaker used to record the preparing database. This system uses automatic statistical processes to extract segments of speech from large speech carpus. Desired sentence is produced by concatenation of small
 segments of speech. Hidden Markov model is trained and used for segmentation of speech database into HMM-state-sized
 units. A decision tree is constructed by using phonetic context labels which is used for clustering of the training speech into
 acoustically self-comparable grouped states. This process helps to find most important context effects. The string to be
@@ -147,19 +147,19 @@ The MRT error rate for test was 5.0\% and standard error rate was 0.47\%. Segmen
 
 \cite{masuko1996speech} present a TTS system which is based on HMM which comprise dynamic features. The statistical parametric speech synthesis system can change voice characteristics of speech by speaker adaptation technique \cite{tamura1998speaker} and speaker interpolation technique \cite{yoshimura2001speaker}. The Hidden Markov Model statistical parametric text-to-speech system can model speech parameters like spectrum or excitation with the help of context-dependent HMM and construct speech signals. Version 2.0 of already build HMM based text to speech system (HTS) toolkit is presented in \cite{zen2007hmm}. Hidden Markov model based speech synthesis system can be used to build speech synthesis system without needing huge dataset for training \cite{huang2001spoken}. The quality if that speech is not equal to recorded speech. 
 
-In \cite{merritt2013investigating}, author discussed shortcomings of Hidden Markov model and majorly focused on the findings that HMM based TTS system are not better than simple concatenative TTS systems. Experiments performed and then through pairwise listening test the HMM based system evaluated. Based on the responses of qualities, model molded to tackle further situational problems. In figure \ref{fig:Merritt_tts}, architecture of this system is shown.
-\begin{center}
-	\begin{figure}[hbtp]
-		\centering
-		\includegraphics[width=\linewidth]{images/Merritt_tts.png}
-		\caption{TTS System Architecture using HMM speech synthesiser}
-		\label{fig:Merritt_tts}
-	\end{figure}
-\end{center}
+% In \cite{merritt2013investigating}, author discussed shortcomings of Hidden Markov model and majorly focused on the findings that HMM based TTS system are not better than simple concatenative TTS systems. Experiments performed and then through pairwise listening test, the HMM based system is evaluated. Based on the responses of qualities, model molded to tackle further situational problems. In figure \ref{fig:Merritt_tts}, architecture of this system is shown.
+% \begin{center}
+% 	\begin{figure}[hbtp]
+% 		\centering
+% 		\includegraphics[width=\linewidth]{images/Merritt_tts.png}
+% 		\caption{TTS System Architecture using HMM speech synthesiser}
+% 		\label{fig:Merritt_tts}
+% 	\end{figure}
+% \end{center}
 
-Experiments show that this is secondary problem. When variance is too high then smoothing has a beneficial effect as it
-reduces the variance and bring the points closer to the natural one. For future, needs to work over spectral envelope over-smoothness, averaging across multiple tokens of similar speech sounds, model boundary discontinuities in the trajectory and
-inconsistencies between the different speech parameter streams \cite{merritt2013investigating}.
+% Experiments show that when variance is too high then smoothing has a beneficial effect as it
+% reduces the variance and bring the points closer to the natural one. For future, needs to work over spectral envelope over-smoothness, averaging across multiple tokens of similar speech sounds, model boundary discontinuities in the trajectory and
+% inconsistencies between the different speech parameter streams \cite{merritt2013investigating}.
 
 A more advance technique is Neural Network based technique as it works better than Hidden
 Markov model based technique. Time domain neural networks with
@@ -191,33 +191,26 @@ Recurrent Neural Networks (RNN) is applied in \cite{fan2014tts} by using the Bid
 Short Term Memory (BLSTM) with dataset consisting of 5000 training utterances and 200
 utterances for testing the system. Whole recording was done in voice of female native speaker.
 Objective and subjective evaluation measures are used to find distortion between natural and
-synthesized speech and quality respectively. The preference results that hybrid system is better as
+synthesized speech and quality respectively which shows that brid system is better as
 hybrid gave 44\%, 59\% and 55\% accuracy whereas neural network, HMM and DNN gave 29\%,
 22\% and 20\% accuracy respectively. In \cite{muthukumar2016recurrent} Recurrent Neural Network (RNN) postfilters 
 are used for speech synthesis. 
 
-Researchers have also been working on TTS system for Urdu language. In \cite{ahmed2014hmm}, an HMM based speech synthesis system is developed for Urdu. The speech corpus is created by recording 1 hour and 15 minutes of speech containing 989 sentences in total. In training phase context level, prosody level parameters labels are extracted from recorded sentences e.g. counts, position, distances, stress and phone utterance information. F0 excitation parameter and mel-cepstral coefficients are calculated using RAPT \cite{kleijn1995speech}. The F0 is modeled using frequency
+Researchers have also been working on TTS system for Urdu language for many years. In \cite{ahmed2014hmm}, an HMM based speech synthesis system is developed for Urdu. The speech corpus is created by recording 1 hour and 15 minutes of speech containing 989 sentences in total. In training phase, context level and 
+prosody level parameters labels are extracted from recorded sentences e.g. counts, position, distances, stress and phone utterance 
+information. F0 excitation parameter and mel-cepstral coefficients are calculated using RAPT \cite{kleijn1995speech}. The F0 is modeled using frequency
 distributions discrete for unvoiced and continuous for voiced regions. These HMM models are then clustered using decision
-trees. In synthesis module the input text is labeled and then by speech synthesis algorithm, it generates speech features which
-are passed to filter to obtain speech signal. As we know that TTS systems have to follow to basic sub processes text analysis
-and speech synthesis. In text analysis first the text contains numerals and abbreviations is preprocessed and converted to full
+trees. In synthesis module, input text is labeled and then by speech synthesis algorithm, it generates speech features which
+are passed to filter to obtain speech signal. In text analysis, numerals and abbreviations in input text are preprocessed and converted to full
 textual forms. The date/time and numeric notations are processed using regular expressions (rule based component) and
-abbreviation are converted to text by finding their corresponding words from dictionary. Next diacritic restoration starts for
-this dictionary develop by CRULP (\cite{crulp}) is used along with customized recorded Urdu words. But this dictionary
-deal with diacritic problem that was discussed in intro section to solve this Part of speech tagging can be used but it does not
-serve for difficult problems. In this paper more context information is provided to deal with this issue. After diacritics input is
-converted to phoneme, for this G2P converter which follows guidelines of \cite{hussain2004sound}. The model use 36
+abbreviation are converted to text by finding their corresponding words from dictionary. This stage is followed by diacritic 
+restoration stage which used dictionary develop by CRULP \cite{crulp} to restore diacritics. After this, 
+G2P converter which follows guidelines of \cite{hussain2004sound} is used to convert grapheme to phoneme. The model uses 36
 consonants and 10 vowels. All speech recording in corpus are converted to their phoneme representation and saved in
-pronunciation dictionary after checking by author. During speech synthesis dictionary get priority over G2P converter
-because it is more accurate. After this whole processing on data the speech synthesizer come to action, it uses straight
-vocoder to estimate speech parameters and generation of speech waveform. 680 questions were gathered by using spectrum
-and context features, speech parameter were generated using maximum likelihood criteria. For testing author listened to
-synthetic speech himself and found that it is not intelligible. With usage of such small database and resources it is not
-surprising. The results show that the synthetic speech is close to original in listening but in higher speech rate then recorded
-one. It is assumed that this problem may occur due to incorrect duration modeling or may be due to less example points or
-may due to absence of syllable information. For statistical models, main concern was over smoothing because it reduces the
-variance. In future the model is improved by using large database and syllable information. Also set of at least 1000 words
-with their phoneme sounds will be used for G2P evaluation.
+pronunciation dictionary after checking by author. After this, STRAIGHT vocoder is used to estimate speech parameters and generation 
+of speech waveform. 680 questions were gathered by using spectrum
+and context features, speech parameter were generated using maximum likelihood criteria. For evaluation of system, author listened to
+synthetic speech himself and found that it is not intelligible but can be improved in future work.
 
 In \cite{nawaz2014hidden}, author focused on development Urdu TTS system. In TTS system a language in text form is
 converted to equivalent sound waveform, many systems have been designed until now such as TTS system with selection
