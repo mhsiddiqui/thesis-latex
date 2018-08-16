@@ -29,7 +29,7 @@ This system produces about 97\% correct pronunciation of phonemes. The paper als
 requirement and overall performance statistics of this system. The dataset is developed by extracting
 50,000 words from standard Corpus, Corpus of Present-Day Edited American English i.e. Brown
 corpus \cite{ku1967computational}. The system gave accuracy of about 93\%. A more
-improved system was proposed in \cite{carlson1982multi} and \cite{klatt1982klattalk}. 
+improved system was proposed in \cite{carlson1982multi}, \cite{klatt1982klattalk}. 
 In \cite{klatt1982klattalk}, a TTS system is developed for English and simple numerical and algebraic expressions. 
 The system is rule based system having 500 letters to sound rules. However, it can use pronunciation dictionary of 1500 words for exceptions. 
 The system interface provides facility of selection of voice types (Male or Female). The word boundaries and probable
@@ -160,23 +160,23 @@ The MRT error rate for test was 5.0\% and standard error rate was 0.47\%. Segmen
 % reduces the variance and bring the points closer to the natural one. For future, needs to work over spectral envelope over-smoothness, averaging across multiple tokens of similar speech sounds, model boundary discontinuities in the trajectory and
 % inconsistencies between the different speech parameter streams \cite{merritt2013investigating}.
 
-A more advance technique is Neural Network based technique as it works better than Hidden
-Markov model based technique. Time domain neural networks with
+A more advance technique is Neural Networks based technique as it works better than Hidden
+Markov model based technique. Time domain Neural Networks with
 database containing sounds of words called phonemes is used in \cite{karaali1998text}. The basic flow of the system involves
 speech recording, speech labeling, voice coder and input processing using Time Delay Neural
-Network. The figure \ref{fig:Time Domain Neural Network based TTS System} shows the block diagram of system.
+Network. The figure \ref{fig:Time Domain Neural Networks based TTS System} shows the block diagram of system.
 
 \begin{center}
 	\begin{figure}[hbtp]
 		\centering
 		\includegraphics[width=\linewidth]{images/time_domain_neural_network.jpg}
-		\caption{Time Domain Neural Network based TTS System}
-		\label{fig:Time Domain Neural Network based TTS System}
+		\caption{Time Domain Neural Networks based TTS System}
+		\label{fig:Time Domain Neural Networks based TTS System}
 	\end{figure}
 		
 \end{center}
-Neural network based techniques are used to learn features automatically during training along with the combination of various techniques 
-like linear regression and neural network in \cite{yoshimura2016hierarchical}. Dataset of all previous Blizard Challenges \cite{blizzard_2009_corpus} and
+Neural Networks based techniques are used to learn features automatically during training along with the combination of various techniques 
+like linear regression and Neural Networks in \cite{yoshimura2016hierarchical}. Dataset of all previous Blizard Challenges \cite{blizzard_2009_corpus} and
 afterwards up to 2013 were used. Model was evaluated using 5-fold cross validation. The given model gave 0.11\% and 0.17\% error for LR+LR and LR+NN 
 respectively. Neural Networks is also used in \cite{wu2016merlin} with dataset consisting of 328 hours which was collected in
 voice of native 1506 speakers. The model is tested by giving 20 sets of randomly selected from
@@ -191,8 +191,8 @@ Short Term Memory (BLSTM) with dataset consisting of 5000 training utterances an
 utterances for testing the system. Whole recording was done in voice of the female native speaker.
 Objective and subjective evaluation measures are used to find distortion between natural and
 synthesized speech and quality respectively which shows that hybrid system is better as
-it gave 44\%, 59\% and 55\% accuracy whereas the neural network, HMM and DNN gave 29\%,
-22\% and 20\% accuracy respectively. In \cite{muthukumar2016recurrent} Recurrent Neural Network (RNN) postfilters 
+it gave 44\%, 59\% and 55\% accuracy whereas the Neural Networks, HMM and DNN gave 29\%,
+22\% and 20\% accuracy respectively. In \cite{muthukumar2016recurrent} Recurrent Neural Networks (RNN) postfilters 
 are used for speech synthesis. 
 
 Researchers have also been working on TTS system for Urdu language for many years. A bi-lingual text-to-speech synthesis 
@@ -200,9 +200,9 @@ system for Urdu and Sindhi is designed in \cite{shah2004bi} using bilingual hybr
 
 In \cite{ahmed2014hmm}, an HMM based speech synthesis system is developed for Urdu. The speech corpus is created by recording 1 hour and 15 minutes of speech containing 989 sentences in total. In training phase, context level and prosody level parameters are extracted from recorded sentences e.g. counts, position, distances, stress and phone utterance information. F0 excitation parameter and mel-cepstral coefficients are calculated using RAPT \cite{kleijn1995speech}. The F0 is modeled using frequency distributions discrete for unvoiced and continuous for voiced regions. These HMM models are then clustered using decision trees. In text analysis, numerals and abbreviations in input text are preprocessed and converted to full textual forms. The date/time and numeric notations are processed using regular expressions (rule based component) and abbreviation are converted to text by finding their corresponding words from dictionary. This stage is followed by diacritic restoration stage which used dictionary develop by CRULP \cite{crulp} to restore diacritics. After this, G2P converter which follows guidelines of \cite{hussain2004sound} is used to convert grapheme to phoneme. In synthesis module, input text is labeled and then by speech synthesis algorithm, it generates speech features which are passed to filter to obtain speech signal. The model uses 36 consonants and 10 vowels. All speech recordings in a corpus are converted to their phoneme representation and saved in pronunciation dictionary after checking by author. After this, STRAIGHT vocoder is used to estimate speech parameters and generation of speech waveform. 680 questions were gathered by using spectrum and context features, speech parameter were generated using maximum likelihood criteria. For evaluation of system, the author listened to synthetic speech himself and found that it is not intelligible but can be improved in future work.
 
-In \cite{nawaz2014hidden}, a TTS system for Urdu is developed by using HTS toolkit by using recorded Urdu qaida of grade 2 and 4. This system consists of two processes, text analysis and synthesis of speech. Here feature extraction and calculation of mel-cepstral coefficient is done using technique mentioned in \cite{fukada1992adaptive}, text processing is done using \cite{kabir2002natural} and process of synthesis using process described in \cite{tokuda2000speech}. The HTS toolkit is available for English, Japanese and Portuguese languages. For Urdu, certain modifications are needed which involve creation of context level labels and questions file for Urdu phoneme set. Frequent speaking Urdu words were identified by using greedy algorithm and question files are made to deal with the issue of data sparsity as in a model, only a certain amount of examples can be handled during training phase. If we look on to the contextual level, it is observed that multiple contextual occurrences exist for a single phoneme. To deal with this, a clustering method is used which cluster similar acoustic words in one cluster. The whole training set is placed into single cluster and then split and the question which minimizes the objective function is selected. In the evaluation process, experiment is performed by using 200 frequent Urdu words and native Urdu speakers. Testing of the system shows that the system gives output which is intelligible but not very natural. The reason behind this is data used in training phase consists of full sentences rather than words. If words were used than performance with respect to naturalness will be improved because of clarity and length of word. It is found that 92.5\% words are correctly identified. The system has taken 66 phonemes but for better performance at least 270 examples should provide the system during training phases.
+In \cite{nawaz2014hidden}, a TTS system for Urdu is developed by using HTS toolkit and Urdu qaida of grade 2 and 4. This system consists of two processes, text analysis and synthesis of speech. Here feature extraction and calculation of mel-cepstral coefficient is done using technique mentioned in \cite{fukada1992adaptive}, text processing is done using \cite{kabir2002natural} and process of synthesis using process described in \cite{tokuda2000speech}. The HTS toolkit is available for English, Japanese and Portuguese languages. For Urdu, certain modifications are needed which involve creation of context level labels and questions file for Urdu phoneme set. Frequently speaking Urdu words were identified by using greedy algorithm and question files are made to deal with the issue of data sparsity as in a model, only a certain amount of examples can be handled during training phase. If we look on to the contextual level, it is observed that multiple contextual occurrences exist for a single phoneme. To deal with this, a clustering method is used which cluster similar acoustic words in one cluster. The whole training set is placed into single cluster and then split and the question which minimizes the objective function is selected. In the evaluation process, experiment is performed by using 200 frequent Urdu words and native Urdu speakers. Testing of the system shows that the system gives output which is intelligible but not very natural. The reason behind this is data used in training phase consists of full sentences rather than words. Performance with respect to naturalness can be improved by using words instead of sentences because of clarity and length of word. It is found that 92.5\% words are correctly identified. The system has taken 66 phonemes but for better performance at least 270 examples should provide the system during training phases.
 
-Natural Language Processing unit is very importing unit in speech synthesis system as it handle all language related issues. This unit performs a list of steps for its complete operation which contains tokenization, semantic tagging, string generation, syllabification, stress and intonation marking etc. \cite{saleem2002urdu} and \cite{urdu_text_preprocessing} discuss such unit for Urdu language. This unit is divided in two parts called as preprocessing and phonological processing unit. Pre-processing unit converts number, date and time into their respective literal strings. For example, 100 and 5-11-2002 will be converted into \texturdu{سو} and \texturdu{پانچ نومبر دو ہزار دو} respectively. Special symbols like \$ and & are also handled in pre-processing unit. Last stage of pre-processing unit is grapheme into phoneme convertor. Phonological processing unit contains syllable marker which marks syllable boundaries and stress and intonation markers mark stress and intonation. 
+Natural Language Processing unit is very importing unit in speech synthesis system as it handle all language related issues. This unit performs a list of steps for its complete operation which contains tokenization, semantic tagging, string generation, syllabification, stress and intonation marking etc. \cite{saleem2002urdu}, \cite{urdu_text_preprocessing} discuss such unit for Urdu language. This unit is divided in two parts called as pre-processing and phonological processing unit. Pre-processing unit converts number, date and time into their respective literal strings. For example, 100 and 5-11-2002 will be converted into \texturdu{سو} and \texturdu{پانچ نومبر دو ہزار دو} respectively. Special symbols like \$ and & are also handled in pre-processing unit. Last stage of pre-processing unit is grapheme into phoneme converter. Phonological processing unit contains syllable marker which marks syllable boundaries and stress and intonation markers mark stress and intonation.
 
 % A speech corpus is developed using 10 hours recorded speech of professional speaker containing of 1036 sentences in \cite{mumtaz2016break}. Globalphone which is a database of multilingual types is elaborated in \cite{schultz2002globalphone}. This
 % database contains high quality voice vocabulary which can be used for voice recognition and text to speech system. It
@@ -216,7 +216,7 @@ Natural Language Processing unit is very importing unit in speech synthesis syst
 % produces synthetic sound of single character. In future, urdu sentences are added to generate output in the form of full text.
 
 \cite{saleem2002urdu} discussed consonantal and vocalic sounds for Urdu Language in detail. In \cite{hussain2005phonological}, Phonological Processing unit for Urdu language is discussed in detail. This module applies letter to sound rules, syllabification to the normalized text. This is followed by stress and intonation
-marker. Statistical based part of speech tagger for Urdu language is discussed in \cite{anwar2007statistical}. This is done by calculating probability of each word given a particular tag. Unigram model assign tag for each token that has the maximum probability. Conditional probability for given tags against each word using maximization principle as used in \cite{bird2007introduction} and \cite{carlberger1999implementing}. The model is evaluated by comparison of Unigram, Bigram and Backoff experiments with small and large tag sets. t-test, POS accuracy are used to measure performance. Bigram model considered maximum likelihood principle keeping an
+marker. Statistical based part of speech tagger for Urdu language is discussed in \cite{anwar2007statistical}. This is done by calculating probability of each word given a particular tag. Unigram model assign tag for each token that has the maximum probability. Conditional probability for given tags against each word using maximization principle as used in \cite{bird2007introduction}, \cite{carlberger1999implementing}. The model is evaluated by comparison of Unigram, Bigram and Backoff experiments with small and large tag sets. t-test, POS accuracy are used to measure performance. Bigram model considered maximum likelihood principle keeping an
 eye on the context of text. Backoff model was used to blow away sparse problems. 
 
 % In \cite{anwar2007statistical} small tagset was
@@ -250,72 +250,20 @@ and clause markers in Urdu language using conditional Random Field as a classifi
 
 
 \section{Discussion}
-Raw text can be converted into speech by concatenation of small units of speech from a huge single-speaker speech database.
-Huge database makes it possible to produce more natural sound. TTS system development can be based on rules for
-generation of speech but this method can take intensive labor and rules are
-difficult to be general so that they can be used for other languages as well. In prosody modeling, linguistic rules are used
-\cite{klatt1987review} \cite{pierrehumbert1981synthesizing} but speech produce by these rule based prosody models felt to be robotic. So
-for naturalness of voice unit method are used. This method not only improved naturalness but also decreased required time to
-generate new voice and also made the synthetic speech similar to original donor speaker.
+Raw text can be converted into speech by concatenation of small units of speech from a huge single-speaker speech database. Huge database makes it possible to produce more natural sound. TTS system development can be based on rules for generation of speech but this method can take intensive labor and rules are difficult to be general so that they can be used for other languages as well. In prosody modeling, linguistic rules are used \cite{klatt1987review}, \cite{pierrehumbert1981synthesizing} but speech produce by these rule based prosody models felt to be robotic. So for naturalness of voice, large units are used. This method not only improved naturalness but also decreased required time to generate new voice and also made the synthetic speech similar to original donor speaker.
 
-In TTS system a language in text form is converted to equivalent sound waveform, many systems have been designed until
-now such as TTS system with selection synthesis, HMM model based TTS system and parametric approach based TTS
-system. The best approach for speech synthesis until now is considered to selection synthesis but it has certain limitation that
-is it need large database of recording which is very expensive and not feasible for certain languages \cite{black1994chatr}, \cite{hunt1996unit} and 
-\cite{black2003unit}. HMM on the other hand is becoming popular and being used for number of languages like English \cite{tokuda2002hmm}, Chinese \cite{qian2006hmm}, 
-Arabic \cite{abdel2006improving}, Croatian \cite{martincic2006croatian} and
-Urdu \cite{ahmed2014hmm}. The advantage of parametric over selection is that it does not require saving original signal for
-synthesis due to which database is small for this approach (Zen., et.al, 2009). Basic Text to Speech or TTS system focus over
-conversion of text to voice using multiple techniques \cite{merritt2013investigating}. Different synthesis model has been
-developed but HMM is becoming popular from last few years. Hidden
-Markov model based statistical parametric speech synthesis become very popular in last few years \cite{ze2013statistical}. There
-are multiple tools for TTS but freely available tools mostly use 2 techniques i.e.
+The best approach for speech synthesis until now is considered to selection synthesis but it has certain limitation that is it need large database of recording which is very expensive and not feasible for certain languages \cite{black1994chatr}, \cite{hunt1996unit} and \cite{black2003unit}. Statistical parametric speech synthesis is becoming popular and being used for number of languages like English \cite{tokuda2002hmm}, Chinese \cite{qian2006hmm}, Arabic \cite{abdel2006improving}, Croatian \cite{martincic2006croatian} and Urdu \cite{ahmed2014hmm}. The advantage of parametric over selection is that it does not require saving original signal for synthesis due to which database is small for this approach \cite{zen2009statistical}. Basic Text to Speech or TTS system focus over conversion of text to voice using multiple techniques \cite{merritt2013investigating}. Different synthesis model has been developed but HMM is becoming popular from last few years. Hidden
+Markov model based statistical parametric speech synthesis become very popular in last few years \cite{ze2013statistical}. There are multiple tools for TTS but freely available tools mostly use 2 techniques i.e.
 
 \begin{enumerate}
 	\item Hidden Markov Model based speech synthesis called SPSS
 	\item Simple waveform concatenation.
 \end{enumerate}
 
-SPSS technique is attractive although its results are comparatively not amazing. By \cite{donovan1999hidden} in recent years, 
+SPSS technique is attractive although its results are comparatively not amazing. In recent years,
 the use of statistical modeling in speech recognition system has increased a lot and most of these
-systems are using Hidden Markov Model for acoustic modeling of the system. These systems enable us to construct models
-with large amount of data that is difficult to analyze manually. This technique can be applied on the process of speech
-synthesis. This type of system can be used to run on different data, voices and languages \cite{donovan1999hidden}. 
-There are many speech synthesis systems which can generate high quality speech but they still cannot generate speech
-with different speaking style and voice because large amount of speech data is required in order to get these characteristics.
-This can be achieved using HMM based speech synthesis system \cite{tokuda2002hmm}. Statistical learning techniques can be
-used to build a speech synthesis system. These systems can be trained and voice characteristics of original speaker can be
-produced in synthesized speech. This type of system can be built with Hidden Markov model and its performance can be
-improved by techniques like context-dependent modeling and environment adaptation techniques \cite{tokuda2000speech}. It has
-many advantages like ability to change voice characteristics and robustness which will be very difficult in concatenative
-speech synthesis. But it has some limitations like inefficiency in handling complicated context ascendancies \cite{ze2013statistical}. 
-Most popular speech synthesis technique is unit selection where small units of recorded speech are concatenated in
-order to synthesize speech waveform. This technique is capable of generating high quality speech signals but for getting
-various characteristics of synthesized speech, a huge database is required but the Hidden Markov model based statistical
-parametric text-to-speech system can generate speech signals with various voice characteristics without requiring huge
-database \cite{zen2007hmm}. There is a lot work on TTS system using HMM techniques. In spite of lot of work the output
-voices produced by these kinds of systems look unnatural sometimes. It is surprising that by the time this should be improved
-a lot but there are still existing problems and drawbacks that decrease the performance of TTS system, as compared to other
-simpler concatenation based TTS systems. Through literature review it is easy to say that HMM system do over smoothing
-which cause unnaturalness for TTS System output. There is no proper study which can prove this hypothesis so \cite{merritt2013investigating} 
-present the reasons for this unnatural behavior \cite{merritt2013investigating}.
+systems are using Hidden Markov Model for acoustic modeling of the system \cite{donovan1999hidden}. These systems enable us to construct models with large amount of data that is difficult to analyze manually. This technique can be applied on the process of speech synthesis. This type of system can be used to run on different data, voices and languages \cite{donovan1999hidden}. There are many speech synthesis systems which can generate high quality speech, but they still cannot generate speech with different speaking style and voice because large amount of speech data is required in order to get these characteristics. This can be achieved using HMM based speech synthesis system \cite{tokuda2002hmm}. Statistical learning techniques can be used to build a speech synthesis system. These systems can be trained and voice characteristics of original speaker can be produced in synthesized speech. This type of system can be built with Hidden Markov model and its performance can be improved by techniques like context-dependent modeling and environment adaptation techniques \cite{tokuda2000speech}. It has many advantages like ability to change voice characteristics and robustness which will be very difficult in concatenative speech synthesis. But it has some limitations like inefficiency in handling complicated context ascendance \cite{ze2013statistical}.
 
-From last few years there is a working over TTS systems using multiple techniques. Previously statistical techniques were
-used for this kind of system, Different text to speech systems have been purposed each have its own pros and cons for
-example waveform based model is good enough it can produced human like sound but for this it requires large database and
-in rule based techniques most of the time rules updation is required and novelty is too much difficult with traditional rules.
-Similarly concatenation of phonemes is also difficult to bring novelty and handle new and unseen words \cite{karaali1998text} and \cite{pitrelli2004tobi}. 
-Now there is a need to use neural network for TTS system to improve the results \cite{muthukumar2016recurrent}. 
-Multiple neural networks based techniques exist which are based on HMM and have dominated acoustic
-modeling through neural networks \cite{tokuda2013speech}. From recent years neural networks are being used as acoustic models \cite{ling2015deep} and \cite{zen2015acoustic}. 
-There exist a wide research over the correlation between acoustic modeling and linguistic
-features in late 90's \cite{cawley1993lsp}. Now more focus is on deep neural networks. These
-networks easily map linguistic features to acoustic models using feed forward approach \cite{lu2013combining}, \cite{qian2014training}, \cite{chen2015deep} and 
-\cite{ze2013statistical}. ANN based model have
-ability to provide smooth output by using small database of words and phoneme \cite{ganai2016text}. Paper \cite{muthukumar2016recurrent} 
-is purely focused over complete use of DNN for TTS with amazing results. \cite{ganai2016text} presented a system that gets input and find out 
-respective phoneme. The main problem
-occurs here is discontinuity in high band, it affects speech synthesis. For that ANN and waveform both method are used \cite{ganai2016text}. 
-Fan et.al (2014) used Recurrent Neural Network using Bidirectional Long Short Term Memory
-(BLSTM). The older techniques are good but this hybrid approach improved the results of experiments and can fetch deep
-information easily \cite{fan2014tts}.
+Another popular speech synthesis technique is unit selection where small units of recorded speech are concatenated in order to synthesize speech waveform. This technique is capable of generating high quality speech signals but for getting various characteristics of synthesized speech, a huge database is required. On the other hand, Hidden Markov model based statistical parametric text-to-speech system can generate speech signals with various voice characteristics without requiring huge database \cite{zen2007hmm}. A lot of research work on TTS system has been done using HMM techniques but the output voices produced by these kinds of systems look unnatural sometimes. It is surprising that by the time this should be improved a lot but there are still existing problems and drawbacks that decrease the performance of TTS system, as compared to other simpler concatenation based TTS systems. Through literature review it is easy to say that HMM system do over smoothing which cause unnaturalness for TTS System output. There is no proper study which can prove this hypothesis so \cite{merritt2013investigating} present the reasons for this unnatural behavior \cite{merritt2013investigating}.
+
+Many text to speech systems have been purposed and each have its own pros and cons for example waveform based model is good enough it can produce human like sound but for this it requires large database and in rule based techniques most of the time rules updating is required and novelty is too much difficult with traditional rules. Similarly, with concatenation of phonemes, it is also difficult to bring novelty and handle new and unseen words \cite{karaali1998text}, \cite{pitrelli2004tobi}. Neural Networks can be used to improve results of speech synthesis system \cite{muthukumar2016recurrent}. From recent years, Neural Networks are being used as acoustic models \cite{ling2015deep}, \cite{zen2015acoustic}. There exists a wide research over the correlation between acoustic modeling and linguistic features in late 90s \cite{cawley1993lsp}. Now more focus is not Neural Networks based techniques. Neural Networks easily map linguistic features to acoustic models using feed forward approach \cite{lu2013combining}, \cite{qian2014training}, \cite{chen2015deep} and \cite{ze2013statistical}. 
