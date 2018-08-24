@@ -1,7 +1,7 @@
 \chapter{Methodology}
 
-Text to Speech synthesis system designed in this paper is divided in two sub modules. One perform analysis and preprocessing of 
-data and other transform processed data into sound signals. These modules are following
+Text to Speech synthesis system designed in this paper is divided in two sub modules. One module performs analysis and preprocessing of 
+data and other transforms processed data into sound signals. These modules are following
 
 \begin{enumerate}
   \item Text Processing Unit
@@ -9,9 +9,7 @@ data and other transform processed data into sound signals. These modules are fo
 \end{enumerate}
 
 \section{Text Processing Unit}
-This unit is the unit which is responsible for processing of text before text is sent to speech synthesis system. 
-This unit find numbers, dates and time in input data and converts it into format acceptable by speech synthesizer.  
-This module consists of following sub modules.
+Text processing unit is responsible for processing of text before it is sent to speech synthesis system. This unit finds numbers, dates and time in input data and converts it into format acceptable by speech synthesizer. This module consists of following sub modules.
 
 \begin{enumerate}
   \item Special Character Processor
@@ -23,7 +21,7 @@ This module consists of following sub modules.
 
 \subsection{Special Character Processor}
 
-Raw text may contain special characters such as punctuation marks. These characters helps to understand context of a word but 
+Raw text may contain special characters such as punctuation marks. These characters help to understand context of a word but 
 are not converted into sounds. We remove all such characters from text before further processing. 
 Another processing which is done is conversion of all arabic numerals like \textarabic{١}, \textarabic{٢} and \textarabic{٣} into their corresponding 
 characters like 1, 2 and 3. It is because it makes it easy to further process text after it has been converted into same type of numerals.
@@ -76,7 +74,7 @@ In table \ref{table:semantic_tagger_regex}, regex used for identification of the
 \end{table}
 
 \subsection{Text Generator}
-Semantic tagger will return all number, dates and time from text with each one marked as date/time/number. Text generator part will take each word and generate Urdu text according to its tagging. Each tagged number is handled by specific text converter. These converters are listed below.
+Semantic tagger will return all numbers, dates and time from text with each one marked as date/time/number. Text generator part will take each word and generate Urdu text according to its tagging. Each tagged number is handled by specific text converter. These converters are listed below.
 
 \begin{enumerate}
   \item Number to Text Converter
@@ -104,7 +102,7 @@ This unit will deal with whole numbers, fractional numbers and decimal numbers. 
 \label{table:no_conversion_example}
 \end{table}
 
-The both integer and fractional part of floating point number are handled differently. The algorithm for integral number is described below.
+The both integer and fractional parts of floating point number are handled differently. The algorithm for integral number is described below.
 
 \begin{minted}[mathescape,
                breaklines, 
@@ -126,10 +124,9 @@ The both integer and fractional part of floating point number are handled differ
 
 \end{minted}
 
-This algo will return list of factored number and factors. For 1213, the result of this algorithm will be 
+This algo will return list of factored numbers and factors. For 1213, the result of this algorithm will be 
 [1, 1000, 2, 100, 13]. The integer to Urdu mapping for number 0 to 100 and number like 1000, 100000 etc are 
-stored in CSV file. The factored number list will then be converted into text by using integer to Urdu mapping. In table \ref{table:number_mapping} urdu mapping 
-of each possible factor is listed. Each number in fractional part of floating pointing number is replaced by their respective mapping from above list. 
+stored in CSV file. The factored number list will then be converted into text by using integer to Urdu mapping. In table \ref{table:number_mapping}, Urdu mapping of each possible factor is listed. Each number in fractional part of floating pointing number is replaced by their respective mapping from above list. 
 These two parts are then join to get complete text of input number. This module is very important module as it is also used in date and time conversion.  
 
 \subsubsection{Date to Text Converter}
@@ -246,11 +243,11 @@ Festival Speech Synthesis system.
 
 \subsubsection{Preparing Data}
 
-For training purpose, Phonetically Rich Urdu Speech Corpus \cite{urdu_corpus} is used. This data consists of recordings of 708 phonetically rich sentence, 
+For training purpose, Phonetically Rich Urdu Speech Corpus \cite{urdu_corpus} is used. This data consists of recordings of 708 phonetically rich sentences, 
 10,101 tokens with 5,656 unique words. Total duration of recording is 70 minutes.
 
 \subsubsection{Data Labeling}
-Data is labeled in labeled in specific format which is required by FestVox for training purpose. The is labeled in following format.
+Data is labeled in specific format which is required by FestVox for training purpose. The is labeled in following format.
 \\ \\
 ( c1 "\texturdu{نیلم نے سالگرہ پر ہیڈ سیسموگراف اسود قریشی کے ماتھے پر اینٹھن اور غم کی آتشیں رو محسوس کی}" )
 
@@ -290,11 +287,11 @@ Utterance is the essential building unit of Festival. It shows relation between 
 
 \begin{itemize}
   \item{\textbf{Text}:} It consists of string to be processed and features of that string.
-  \item{\textbf{Token}:} Token mean each word in a sentence separated by some language specific separator.
+  \item{\textbf{Token}:} Token mean each word in a sentence is separated by some language specific separator.
   \item{\textbf{Word}:} A small unit of speech which can be pronounced with the help of letter to sound rules of a language.
   \item{\textbf{Phrase}:} Phrase mean group of words forming a part of a sentence.
   \item{\textbf{Syllable}:} Syllables are units which when combined with vowels form complete pronunciation of a word.
-  \item{\textbf{Segment}:} Segment is consists of list of phones.
+  \item{\textbf{Segment}:} Segment consists of list of phones.
   \item{\textbf{SylStructure}:} This is a tree structure which is formed with word, syllable and segment.
   \item{\textbf{IntEvent}:} These are array of syllable related intonation events.
   \item{\textbf{Intonation}:} Intonation means rise and fall in speech signals.
