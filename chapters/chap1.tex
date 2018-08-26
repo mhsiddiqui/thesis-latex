@@ -2,16 +2,16 @@
 
 \section{Speech Synthesis}
 
-Speech is most important medium of conveying opinions and expressing feelings and thoughts.
-Human convert their thoughts into speech by using words, phrases and sentences in order to communicate with each other \cite{mumtaz2016break}. 
-Speech is produced when air is exhaled by the lungs and vibrations are produced by air, these vibrations got a 
+Speech is the most important medium of conveying opinions and expressing feelings and thoughts.
+Human convert their thoughts into speech by using words, phrases and sentences in order to communicate \cite{mumtaz2016break}. 
+Speech is produced when air is exhaled by the lungs and vibrations are produced by air, these vibrations get a 
 proper waveform shape by glottal cords and vocal tract. Text to Speech synthesis is the process of conversion of raw text into 
-speech signals. It works by concatenation of small segments of recorded speech called phonemes \cite{khilari2015review}. Speech data is obtained by first recording natural speech by using some type of recording systems and then converted to digital form. The digital data is sampled and stored in computer, after that passed back to analog signals and converted back to speech \cite{greene1986perception}. 
+speech signals. It works by concatenation of small segments of recorded speech called phonemes \cite{khilari2015review}. Speech data is obtained by first recording natural speech by using some type of recording systems and is converted to digital form. The digital data is sampled and stored in computer, after that passed back to analog signals and is converted back to speech \cite{greene1986perception}. 
 
-Text to speech systems are becomming important as they can be used in machine to effectively transmit
+Text to speech systems are becomming important as they can be used in machines to effectively transmit
 information to human using artificial speech as information exchange through computers has become the integral part of new
-era. Partially blinded or fully blinded people usually suffer while using computer technology when there is no assistant or
-computer is not enough interactive. Due to which text to speech systems are becoming necessity of modern life. These
+era. Visually impaired people usually suffer while using computer technology when there is no assistant or
+computer is not enough interactive which makes text to speech systems necessity of modern life. These
 systems increase the degree to which blind people can interact with sighted people \cite{klatt1987review} and could boost up
 their hope to survive in this world gracefully \cite{aida2010main}. Many applications of speech synthesis are emerging such as 
 machines that read for blinds, aids for handicaps, computers that interact with user through speech. 
@@ -29,7 +29,7 @@ other is called Speech Synthesis (SS). This is shown in figure \ref{fig:TTS Bloc
 
 In NLP unit, text is first converted into string of letters and then word boundaries are marked by
 tokenizer. This is called normalization of text. Normalized data is then converted into phonetic strings
-with the help of letter to sound rules after which Syllabifier marks syllable boundaries. Sound change
+with the help of letter to sound rules after which syllabifier marks syllable boundaries. Sound change
 rules are applied on the syllabified data. Language modeling techniques are also applied for finding
 context in which a specific word is used. As human has tendency to recognize basic rules for his native
 language, it is easy to judge context of a word in a sentence and what should be correct pronunciation of
@@ -40,7 +40,7 @@ received from NLP unit into audible speech with the help of different Digital Si
 techniques. The quality of speech synthesis system is detected by naturalness and intelligibility of the speech.
 
 In digital world, there are some people who can read and understand different languages and some
-who can’t understand languages except their own languages. Speech to text conversion system can
+who can’t understand languages except their own language. Speech to text conversion system can
 also provide a facility to exchange information between people speaking different languages \cite{khilari2015review}. 
 TTS systems are also needed to reduce the extinction of
 minority languages. As minority languages of the world are facing challenge of extinction
@@ -52,8 +52,7 @@ Urdu is national language of Pakistan and it is spoken by more than 100 million 
 A Text-to-Speech (TTS) system for Urdu will be very helping for visually impaired, handicapped and illiterate people.
 
 For human, the task of speech synthesis is not difficult one as they have basic knowledge of their
-language but for computer some
-other method has to be implemented for this task. When we talk about TTS systems speech types
+language but for computer some other method has to be implemented for this task. When we talk about TTS systems speech types
 and procedure for synthesis, strategies or modules used to develop systems etc. are important to
 consider. Different types of speech exist such as isolated word (process single word at a time),
 connected words (isolated words but separated with least gap), continuous speech (permit client
@@ -68,11 +67,12 @@ For the process of speech synthesis, three types of techniques are used.
 
 \subsection{Formant Synthesis}
 In Formant Synthesis, speech waveform is generated using concatenation of sine wave with the help of some algorithms to model a source of sound \cite{format_synthesis}. All speech parameters are changed periodically in order to get speech waveform. Some set of rules are also used to generate speech due to which this technique is also called rule based speech synthesis. But it is very difficult to accurately describe the process of speech generation in set of rules therefor the speech generated by this technique is not very natural but intelligible.
+
 \subsection{Concatenative Synthesis}
-In concatenative synthesis small units are selected from carrier sentences which then join to form
+In concatenative synthesis, small units are selected from carrier sentences which are joined to form
 speech of complete sentence. These small units are called phonemes. These are the units which
 collectively describe correct pronunciation of a word. This process is easy as compared to previous one
-as number of such phonemes is limited for any language. For English, there are 44 such phonemes.
+as number of such phonemes are limited for any language. For English, there are 44 such phonemes.
 Similarly in Urdu, there are 44 consonants, 8 long vowels, 7 long nasal vowels, 3 short vowels and many
 diphthongs \cite{saleem2002urdu}. This reduce distortion but it can decrease the naturalness.
 That’s why the derived synthetic speech may not resemble the donor speaker in training database \cite{huang1996whistler}.
@@ -84,7 +84,7 @@ concatenative technique \cite{merritt2013investigating}.
 
 \section{Quality of Speech Synthesis System}
 Intelligibility and naturalness is the measure of quality of the synthesized speech \cite{swetha2013text}. 
-There is lots of experimentation over naturalness of voice as a result of TTS
+There are lots of experimentation over naturalness of voice as a result of TTS
 systems. In today’s world, different segments are recorded and then concatenated for completing a
 message. A collection of speech words is collected and maintained in database by using a reader
 who reads large series of text. In these kind of systems, to maintain the consistency the speaker
@@ -93,10 +93,9 @@ the inconsistency. This type of TTS system is not required at all as the need is
 which can be expressive and convey message with proper expressions and styles. Work is
 performed to build a system that can convey the message according to the needs of the users. A
 single style of communication can lead towards wrong messages and can cause other problems of
-understandings. For example, it is not appropriate to convey a good news and bad news in a same
+misunderstandings. For example, it is not appropriate to convey a good news and bad news in a same
 style and manner. Similarly, it is not acceptable to ask a question in neutral way of communication \cite{eide2004corpus}.
-Multiple techniques like linear regression and neural networks were applied
-to get the results with improvements. Concatenation techniques are applied to get fully
+Multiple techniques like linear regression and neural networks were applied to get the improved results. Concatenation techniques are applied to get fully
 expressive and stylish messages for end users. By using concatenation technique, users can
 customize, add styles and expression through provided Speech Synthesis Markup Language (SSML) \cite{eide2004corpus}. 
 Timing of events in speech is also important as timing of events in
@@ -105,6 +104,7 @@ make it difficult to control timing of events \cite{tokuda2000speech}. There are
 to control timing of events like linear regression \cite{kaiki1992linguistic} and tree regression \cite{riley1992tree}. 
 A new technique is proposed in \cite{tokuda2000speech} where timing of events is
 controlled by multi-dimensional Gaussian distribution based Hidden Markov model.
+
 \section{Architecture}
 Text to speech is a way of communication and transferring information using words and styles of
 speaking \cite{eide2004corpus}. It has two processes which are text processing and speech
