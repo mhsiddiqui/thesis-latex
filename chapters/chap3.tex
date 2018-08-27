@@ -1,22 +1,16 @@
 \chapter{Methodology}
 
-Text to speech synthesis convert raw text into speech waveform. This process 
-Text to Speech synthesis system designed in this paper is divided in two sub modules. One module performs analysis and preprocessing of data and other transforms processed data into sound signals. These modules are following
-
-\begin{enumerate}
-  \item Text Processing Unit
-  \item Speech Synthesis System
-\end{enumerate}
+Text to speech synthesis convert raw text into speech waveform. This process is divided in two sub modules. One module performs analysis and preprocessing of data and other transforms processed data into sound signals. This is shown in \ref{fig:TTS Sub Modules}
 
 \begin{figure}[hp]
   \centering
-  \includegraphics[width=\linewidth]{images/tts_bd.jpg}
-  \caption{TTS Block Diagram}
-  \label{fig:TTS Block Diagram}
+  \includegraphics[width=\linewidth]{images/tts_flow_dg.jpg}
+  \caption{TTS Sub Modules}
+  \label{fig:TTS Sub Modules}
 \end{figure}
 
 \section{Text Processing Unit}
-Text processing unit is responsible for processing of text before it is sent to speech synthesis system. This unit finds numbers, dates and time in input data and converts it into format acceptable by speech synthesizer. This module consists of following sub modules.
+Text processing unit is responsible for processing of text before it is sent to speech synthesis system. It finds numbers, dates and time in input data and converts it into format acceptable by speech synthesizer. This module consists of following sub modules.
 
 \begin{enumerate}
   \item Special Character Processor
@@ -30,7 +24,7 @@ Text processing unit is responsible for processing of text before it is sent to 
 Raw text may contain special characters such as punctuation marks. These characters help to understand context of a word but 
 are not converted into sounds. We remove all such characters from text before further processing. 
 Another processing which is done is conversion of all arabic numerals like \textarabic{١}, \textarabic{٢} and \textarabic{٣} into their corresponding 
-characters like 1, 2 and 3. It is because it makes it easy to further process text after it has been converted into same type of numerals.
+characters like 1, 2 and 3 because it is easy to further process text after it has been converted into same type of numerals.
 
 \subsection{Semantic Tagger}
 The purpose of Semantic Tagger is to identify numbers, dates and time from input data and give them proper tags. 
@@ -80,12 +74,12 @@ In table \ref{table:semantic_tagger_regex}, regex used for identification of the
 \end{table}
 
 \subsection{Text Generator}
-Semantic tagger will return all numbers, dates and time from text with each one marked as date/time/number. Text generator part will take each word and generate Urdu text according to its tagging. Each tagged number is handled by specific text converter. These converters are listed below.
+Semantic tagger will return all numbers, dates and time from text with each one marked as date/time/number. Text generator part will take each word and generates Urdu text according to its tagging. Each tagged number is handled by specific text converter. These converters are listed below.
 
 \begin{enumerate}
-  \item Number to Text Converter
-  \item Date to Text Converter 
-  \item Time to Text Converter
+  \item Number to text converter
+  \item Date to text converter 
+  \item Time to text converter
 \end{enumerate}
 
 \subsubsection{Number to Text Converter}
@@ -108,7 +102,7 @@ This unit will deal with whole numbers, fractional numbers and decimal numbers. 
 \label{table:no_conversion_example}
 \end{table}
 
-The both integer and fractional parts of floating point number are handled differently. The algorithm for integral number is described below.
+Both the integer and fractional parts of floating point number are handled differently. The algorithm for integral number is described below.
 
 \begin{minted}[mathescape,
                breaklines, 
@@ -132,8 +126,11 @@ The both integer and fractional parts of floating point number are handled diffe
 
 This algo will return list of factored numbers and factors. For 1213, the result of this algorithm will be 
 [1, 1000, 2, 100, 13]. The integer to Urdu mapping for number 0 to 100 and number like 1000, 100000 etc are 
-stored in CSV file. The factored number list will then be converted into text by using integer to Urdu mapping. In table \ref{table:number_mapping}, Urdu mapping of each possible factor is listed. Each number in fractional part of floating pointing number is replaced by their respective mapping from above list. 
-These two parts are then join to get complete text of input number. This module is very important module as it is also used in date and time conversion.  
+stored in CSV file. The factored number list will then be converted into text by using integer to Urdu mapping. 
+In table \ref{table:number_mapping}, Urdu mapping of each possible factor is listed. Each number in fractional 
+part of floating pointing number is replaced by their respective mapping from above list. 
+Both the mappings of integral and fractional part of number are then joined to get
+complete text of input number. This module is very important module as it is also used in date and time conversion.  
 
 \subsubsection{Date to Text Converter}
 
@@ -165,17 +162,17 @@ All dates will be converted into common format e.g. \texturdu{ بارہ دسمب
 \label{table:example_of_date_conversions}
 \end{table}
 
-The word tagged as date is first processed to get year, month and day of month. Day and year are then passed to number to text converter and month is 
+The word tagged as date is first processed to get year, month and day of the month. Day and year are then passed to number to text converter and month is 
 converted to its corresponding mapping. This mapping is saved in CSV file. This is shown in table \ref{table:month_mapping}. 
 In Urdu, in dates, we have different notation for year e.g. 1980 in number is spoken as \texturdu{ایک ھزار نو سو نواسی} (One thousand nine hundred and 
 eighty nine) but in dates, it is spoken as \texturdu{انیس سو نواسی} 
-(Nineteen hundred and eighty nine). This thing is also handled during the process of date to text conversion.
+(Nineteen hundred and eighty nine). This is also handled during the process of date to text conversion.
 
 
 \subsubsection{Time to Text Converter}
 
-Time can occur with seconds or without seconds in text. It is written in 1:11:12 or 1:12 format. All word tagged as time will be converted into text 
-by separating hour, minutes and seconds from time. Each value will be converted into Urdu text by using number to text converted. All these values are 
+Time can occur with seconds or without seconds in text. It is written in 1:11:12 or 1:12 format. All words tagged as time will be converted into text 
+by separating hour, minutes and seconds from time. Each value will be converted into Urdu text by using number to text converter. All these values are 
 combined to make complete time text. Table \ref{table:example_time_conversion} shows example conversions.
 
 \begin{table}[]
@@ -198,7 +195,7 @@ This process is performed in following order
   \item Word tagged as time are replaced by their corresponding text
   \item Word tagged as number are replaced by their corresponding text. 
 \end{enumerate}
-The resultant text will only contains Urdu text which can now pass to the speech synthesizer which will convert it to speech signals. 
+The output of all above processes will be the text which will only contain Urdu text which can now pass to the speech synthesizer which will convert it to speech signals. 
 
 \section{Speech Synthesis System}
 
@@ -220,10 +217,9 @@ be used in user defined programs.
 
 
 \subsubsection{Festvox}
-Festvox is a tool which can be used to build synthetic voices. This includes scripts for building voice in other languages. 
-This can be used to build voice for limited domain in specific language.
+Festvox is a tool which can be used to build synthetic voices. This includes scripts for building voice in other languages.
 
-\subsubsection{SPTK}
+\subsubsection{ Speech Signal Processing Toolkit (SPTK)}
 SPTK stands for Speech Processing Toolkit. As name suggests, this tool is for processing speech signals in UNIX systems. 
 
 \subsubsection{Festival}
@@ -232,8 +228,8 @@ Festival is a speech synthesis system developed in Centre for Speech Technology 
 framework for building speech synthesis system. This system is designed in such a way that it can be used for following purposes
 
 \begin{enumerate}
-  \item Research purpose for improvement in speech synthesis system
-  \item For developing speech synthesis applications
+  \item Improvement in speech synthesis system
+  \item Developing speech synthesis applications
 \end{enumerate}
 
 One of the main thing that makes Festival very useful is scripting language which is based upon Scheme programming language. This can be used to manage parameters and flow of  control in Festival. 
@@ -268,16 +264,16 @@ The whole data is further divided in 10:1 ratio in training and test set respect
 
 The underlying system of Urdu TTS is Hindi TTS system. So all the alphabets are mapped in their corresponding Hindi alphabets. 
 In this way, text is first converted into corresponding Hindi text using that mapping and then it is converted into sound. 
-Mapping of each Urdu word with Hindi word used in this system is shown in table \ref{table:hindi_to_urdu}.
+Mapping of each Urdu word with Hindi in this system is shown in table \ref{table:hindi_to_urdu}.
 
-\subsubsection{Labeling Data}
+\subsubsection{Data Labeling}
 
 The first stage of training is to label speech database using HMM labeler. We are using EHMM labeler which is provided in FestVox. In this process, context dependent models are trained using Baum-Welch. This labeler works in 8 steps.
 Prompt files are extracted from utterance structure of Festival.
 
 \begin{itemize}
-  \item From prompt files unique sequence of phones are extracted and stored in a list.
-  \item List of wav files is collected for feature extraction by using prompt files.
+  \item Unique sequence of phones are extracted and stored.
+  \item List of wav files is collected for feature extraction.
   \item From wav files, cepstral coefficients (LPCCs and MFCCs) are extracted.
   \item From cepstral coefficients, deltas and delta-delta features are generated.
   \item By using generated features and wav files list, features vectors are modified.
@@ -292,10 +288,10 @@ Prompt files are extracted from utterance structure of Festival.
 Utterance is the essential building unit of Festival. It shows relation between bunch of items where each item relates to word, syllable or segment etc. Below are the some of the relations used in building utterance structure.
 
 \begin{itemize}
-  \item{\textbf{Text}:} It consists of string to be processed and features of that string.
-  \item{\textbf{Token}:} Token mean each word in a sentence is separated by some language specific separator.
+  \item{\textbf{Text}:} It consists of strings to be processed and features of that string.
+  \item{\textbf{Token}:} Token means each word in a sentence is separated by some language specific separator.
   \item{\textbf{Word}:} A small unit of speech which can be pronounced with the help of letter to sound rules of a language.
-  \item{\textbf{Phrase}:} Phrase mean group of words forming a part of a sentence.
+  \item{\textbf{Phrase}:} Phrase means group of words forming a part of a sentence.
   \item{\textbf{Syllable}:} Syllables are units which when combined with vowels form complete pronunciation of a word.
   \item{\textbf{Segment}:} Segment consists of list of phones.
   \item{\textbf{SylStructure}:} This is a tree structure which is formed with word, syllable and segment.
