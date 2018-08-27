@@ -108,13 +108,13 @@ controlled by multi-dimensional Gaussian distribution based Hidden Markov model.
 \section{Architecture}
 Text to speech is a way of communication and transferring information using words and styles of
 speaking \cite{eide2004corpus}. It has two processes which are text processing and speech
-generation. In text processing given input text is processed so that to get appropriate chain of
-phonemic units. Speech generator takes these units as inputs and convert them into synthetic
+generation. In text processing, the given input text is processed so that to get appropriate chain of
+phonemic units. Speech generator takes these units as input and converts them into synthetic
 speech by selection of a unit from large corpus TTS system for small database is easier to
 implement but not in good quality \cite{black2007statistical, zen2007hmm, raj2007text}.
 Different researchers and developers used different strategies and architecture to develop TTS system. In \cite{kabir2002natural}, raw text is converted into intelligible speech signals by following two sub processes called High-level synthesis and Low-level synthesis. High-level
 synthesis converts text into phonetic strings and Low-level synthesis converts these strings into
-speech signals \cite{kabir2002natural}. In \cite{hussain2005phonological}, TTS system is divided in three modules.
+speech signals \cite{kabir2002natural}. In \cite{hussain2005phonological}, TTS system is divided into three modules.
 
 \begin{enumerate}
   \item Natural language Processing
@@ -143,13 +143,13 @@ sequence.
   \item Speech Signal Generation
 \end{enumerate}
 
-In text analysis, the input text is segmented into sentences and later on dividied into words.
+In text analysis, the input text is segmented into sentences and then dividied into words.
 These words are then categorized according to their syntactic and contextual meaning. The
 numbers and abbreviations are also processed in this step. In word pronunciation process, words
 are represented by respective phonetic notations by using word pronunciation dictionary. In
-phonetic interpretation the duration of phonetic segments, pitch, accents are assigned. Signal
+phonetic interpretation the duration of phonetic segments, pitch and accents are assigned. Signal
 generation component of TTS system takes output from all above processes and generate a signal
-of speech using a function. In \cite{urdu_text_preprocessing}, text-to-Speech system is divided in
+of speech using a function. In \cite{urdu_text_preprocessing}, Text-to-Speech system is divided in
 two parts. One is called Natural Language Processing unit and other is called Speech Synthesis
 unit. Natural Language Processing unit preprocess text and converts it into phonetic strings. These
 phonetic strings are then marked by stress marker and passed to speech synthesis unit which

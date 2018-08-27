@@ -1,12 +1,19 @@
 \chapter{Methodology}
 
-Text to Speech synthesis system designed in this paper is divided in two sub modules. One module performs analysis and preprocessing of 
-data and other transforms processed data into sound signals. These modules are following
+Text to speech synthesis convert raw text into speech waveform. This process 
+Text to Speech synthesis system designed in this paper is divided in two sub modules. One module performs analysis and preprocessing of data and other transforms processed data into sound signals. These modules are following
 
 \begin{enumerate}
   \item Text Processing Unit
   \item Speech Synthesis System
 \end{enumerate}
+
+\begin{figure}[hp]
+  \centering
+  \includegraphics[width=\linewidth]{images/tts_bd.jpg}
+  \caption{TTS Block Diagram}
+  \label{fig:TTS Block Diagram}
+\end{figure}
 
 \section{Text Processing Unit}
 Text processing unit is responsible for processing of text before it is sent to speech synthesis system. This unit finds numbers, dates and time in input data and converts it into format acceptable by speech synthesizer. This module consists of following sub modules.
@@ -17,7 +24,6 @@ Text processing unit is responsible for processing of text before it is sent to 
   \item Text Generator
   \item Text Formatter 
 \end{enumerate}
-
 
 \subsection{Special Character Processor}
 
